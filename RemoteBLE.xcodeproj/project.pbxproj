@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		042CBF9827CBC36800D56FFB /* GoProBLEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBF9727CBC36800D56FFB /* GoProBLEApp.swift */; };
-		042CBF9A27CBC36800D56FFB /* BLEsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBF9927CBC36800D56FFB /* BLEsView.swift */; };
+		042CBF9A27CBC36800D56FFB /* BLEScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBF9927CBC36800D56FFB /* BLEScanningView.swift */; };
 		042CBF9F27CBC36900D56FFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042CBF9E27CBC36900D56FFB /* Preview Assets.xcassets */; };
 		042CBFA927CBC36A00D56FFB /* GoProBLETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBFA827CBC36A00D56FFB /* GoProBLETests.swift */; };
 		042CBFB327CBC36A00D56FFB /* GoProBLEUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBFB227CBC36A00D56FFB /* GoProBLEUITests.swift */; };
@@ -21,6 +21,12 @@
 		04684E8C27DE20F30048F1D0 /* GoProDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */; };
 		04684E8E27DE21580048F1D0 /* GoProEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8D27DE21580048F1D0 /* GoProEnums.swift */; };
 		04684E9027DE28E80048F1D0 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8F27DE28E80048F1D0 /* DataExtension.swift */; };
+		047FDC70280924440049A502 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC6F280924440049A502 /* AuthenticationView.swift */; };
+		047FDC71280926410049A502 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047FDC6E280923AA0049A502 /* Auth0.plist */; };
+		047FDC72280926420049A502 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047FDC6E280923AA0049A502 /* Auth0.plist */; };
+		047FDC73280926450049A502 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047FDC6E280923AA0049A502 /* Auth0.plist */; };
+		047FDC762809784E0049A502 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC742809784E0049A502 /* UserModel.xcdatamodeld */; };
+		047FDC78280978F40049A502 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC77280978F40049A502 /* AuthenticationViewModel.swift */; };
 		04C98BA127D12F120030403F /* PeripheralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C98BA027D12F120030403F /* PeripheralModel.swift */; };
 		04CB39532806EDC600949CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CB39522806EDC600949CCC /* Assets.xcassets */; };
 		04CB5AAB27DA4B6900760843 /* ShutterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB5AAA27DA4B6900760843 /* ShutterButton.swift */; };
@@ -50,7 +56,7 @@
 /* Begin PBXFileReference section */
 		042CBF9427CBC36800D56FFB /* RemoteBLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteBLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		042CBF9727CBC36800D56FFB /* GoProBLEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProBLEApp.swift; sourceTree = "<group>"; };
-		042CBF9927CBC36800D56FFB /* BLEsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEsView.swift; sourceTree = "<group>"; };
+		042CBF9927CBC36800D56FFB /* BLEScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEScanningView.swift; sourceTree = "<group>"; };
 		042CBF9E27CBC36900D56FFB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		042CBFA427CBC36A00D56FFB /* RemoteBLETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteBLETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		042CBFA827CBC36A00D56FFB /* GoProBLETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProBLETests.swift; sourceTree = "<group>"; };
@@ -66,6 +72,10 @@
 		04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProDataParser.swift; sourceTree = "<group>"; };
 		04684E8D27DE21580048F1D0 /* GoProEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProEnums.swift; sourceTree = "<group>"; };
 		04684E8F27DE28E80048F1D0 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		047FDC6E280923AA0049A502 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
+		047FDC6F280924440049A502 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		047FDC752809784E0049A502 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
+		047FDC77280978F40049A502 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		04C98BA027D12F120030403F /* PeripheralModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralModel.swift; sourceTree = "<group>"; };
 		04CB39522806EDC600949CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04CB5AAA27DA4B6900760843 /* ShutterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterButton.swift; sourceTree = "<group>"; };
@@ -112,6 +122,7 @@
 		042CBF8B27CBC36800D56FFB = {
 			isa = PBXGroup;
 			children = (
+				047FDC6E280923AA0049A502 /* Auth0.plist */,
 				043017ED2809215C0034381B /* RemoteBLE-Info.plist */,
 				042CBF9627CBC36800D56FFB /* GoProBLE */,
 				042CBFA727CBC36A00D56FFB /* GoProBLETests */,
@@ -135,16 +146,16 @@
 		042CBF9627CBC36800D56FFB /* GoProBLE */ = {
 			isa = PBXGroup;
 			children = (
+				047FDC7D28097BA00049A502 /* BLE */,
+				047FDC7C28097B790049A502 /* Peripheral */,
+				047FDC7B28097B600049A502 /* Utils */,
+				047FDC7A28097B3A0049A502 /* CustomDesigns */,
+				047FDC7928097B210049A502 /* Authentication */,
 				04411C6D27CE3C1700E2AC19 /* GoPro */,
 				042CBF9727CBC36800D56FFB /* GoProBLEApp.swift */,
-				042CBF9927CBC36800D56FFB /* BLEsView.swift */,
-				042CBFC127CBC41500D56FFB /* BLEConnection.swift */,
 				04CB39522806EDC600949CCC /* Assets.xcassets */,
-				04CB5AAA27DA4B6900760843 /* ShutterButton.swift */,
-				04C98BA027D12F120030403F /* PeripheralModel.swift */,
-				04FE8BAA27CCE50F007AF859 /* PeripheralView.swift */,
+				047FDC742809784E0049A502 /* UserModel.xcdatamodeld */,
 				042CBF9D27CBC36900D56FFB /* Preview Content */,
-				04684E8F27DE28E80048F1D0 /* DataExtension.swift */,
 			);
 			path = GoProBLE;
 			sourceTree = "<group>";
@@ -187,6 +198,49 @@
 			path = GoPro;
 			sourceTree = "<group>";
 		};
+		047FDC7928097B210049A502 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				047FDC6F280924440049A502 /* AuthenticationView.swift */,
+				047FDC77280978F40049A502 /* AuthenticationViewModel.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		047FDC7A28097B3A0049A502 /* CustomDesigns */ = {
+			isa = PBXGroup;
+			children = (
+				04CB5AAA27DA4B6900760843 /* ShutterButton.swift */,
+			);
+			path = CustomDesigns;
+			sourceTree = "<group>";
+		};
+		047FDC7B28097B600049A502 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				04684E8F27DE28E80048F1D0 /* DataExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		047FDC7C28097B790049A502 /* Peripheral */ = {
+			isa = PBXGroup;
+			children = (
+				04C98BA027D12F120030403F /* PeripheralModel.swift */,
+				04FE8BAA27CCE50F007AF859 /* PeripheralView.swift */,
+			);
+			path = Peripheral;
+			sourceTree = "<group>";
+		};
+		047FDC7D28097BA00049A502 /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				042CBFC127CBC41500D56FFB /* BLEConnection.swift */,
+				042CBF9927CBC36800D56FFB /* BLEScanningView.swift */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
 		1F43352B581A31770F4BBCE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +251,6 @@
 				BF712536D44C43B6D259EAC3 /* Pods-RemoteBLETests.debug.xcconfig */,
 				709D55A538517F300C17C91D /* Pods-RemoteBLETests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -321,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04CB39532806EDC600949CCC /* Assets.xcassets in Resources */,
+				047FDC71280926410049A502 /* Auth0.plist in Resources */,
 				042CBF9F27CBC36900D56FFB /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047FDC72280926420049A502 /* Auth0.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047FDC73280926450049A502 /* Auth0.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,13 +509,16 @@
 				04411C6627CE233600E2AC19 /* GoProCharacteristics.swift in Sources */,
 				04CB5AAB27DA4B6900760843 /* ShutterButton.swift in Sources */,
 				04411C6827CE266C00E2AC19 /* GoProServices.swift in Sources */,
-				042CBF9A27CBC36800D56FFB /* BLEsView.swift in Sources */,
+				042CBF9A27CBC36800D56FFB /* BLEScanningView.swift in Sources */,
+				047FDC762809784E0049A502 /* UserModel.xcdatamodeld in Sources */,
 				04411C6C27CE3B2800E2AC19 /* GoProCommand.swift in Sources */,
 				04684E9027DE28E80048F1D0 /* DataExtension.swift in Sources */,
 				04684E8E27DE21580048F1D0 /* GoProEnums.swift in Sources */,
 				042CBFC227CBC41500D56FFB /* BLEConnection.swift in Sources */,
 				04C98BA127D12F120030403F /* PeripheralModel.swift in Sources */,
+				047FDC70280924440049A502 /* AuthenticationView.swift in Sources */,
 				042CBF9827CBC36800D56FFB /* GoProBLEApp.swift in Sources */,
+				047FDC78280978F40049A502 /* AuthenticationViewModel.swift in Sources */,
 				04FE8BAB27CCE50F007AF859 /* PeripheralView.swift in Sources */,
 				04411C6A27CE285900E2AC19 /* GoPro.swift in Sources */,
 			);
@@ -800,6 +859,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		047FDC742809784E0049A502 /* UserModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				047FDC752809784E0049A502 /* UserModel.xcdatamodel */,
+			);
+			currentVersion = 047FDC752809784E0049A502 /* UserModel.xcdatamodel */;
+			path = UserModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 042CBF8C27CBC36800D56FFB /* Project object */;
 }

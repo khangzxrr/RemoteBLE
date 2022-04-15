@@ -23,7 +23,8 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     @Published var totalVideos = "0"
     @Published var currentDate = Date()
     
-    
+    @Published var presentBleError = false
+    @Published var navigatingBackToScanning = false
     
     func initPeripheral(peri: CBPeripheral){
         self.peripheral = peri
@@ -90,6 +91,11 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     }
     
     public func recording(){
+        if goPro.CommandCharacteristic == nil {
+            presentBleError = true
+            return
+        }
+        
         peripheral.writeValue(GoProCommand.StartShutter, for: goPro.CommandCharacteristic, type: .withResponse)
     }
     

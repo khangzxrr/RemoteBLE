@@ -23,7 +23,7 @@ class GoProCommand {
         //0x07 = parameter length
         var dateCommand : [UInt8] = [0x09, 0x0D, 0x07, 0x07, 0xE6, 0x01, 0x02, 0x03, 0x04, 0x05]
         
-        if let year = components.year,
+        if //let year = components.year,
            let month = components.month,
            let day = components.day,
            let hour = components.hour,

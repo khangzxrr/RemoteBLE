@@ -21,8 +21,6 @@ struct PeripheralView: View {
     @State var busyButtonColorChange = true
     
     var body: some View {
-   
-        NavigationView {
             VStack(alignment: .center, spacing: 20){
                 Spacer()
                 
@@ -31,6 +29,20 @@ struct PeripheralView: View {
                         bleConnection.reconnecting()
                     }
                 }
+                
+                NavigationLink(destination: BLEScanningView().navigationBarBackButtonHidden(true),
+                               isActive: $periModel.navigatingBackToScanning){}
+                    .hidden()
+                .alert(isPresented: $periModel.presentBleError) {
+                    Alert(
+                        title: Text("Bluetooth error"),
+                        message: Text("Peripheral does not have command service, make sure you select only gopro device!"),
+                        dismissButton: .default(Text("Got it!")) {
+                            periModel.navigatingBackToScanning = true
+                        }
+                    )
+                }
+               
                 
                 VStack{
                     HStack {
@@ -89,18 +101,12 @@ struct PeripheralView: View {
                 }.blur(radius: bleConnection.successConnect ? 0 : 20)
                
             }
-          
-          
-            
             .navigationTitle(peripheral!.name!)
-            
-        }
-        //must place navigation setting next to navigationview
-        .navigationBarBackButtonHidden(false)
-        .navigationBarHidden(true)
-        .onAppear(perform: {
-            bleConnection.connect(peripheral!, periModel)
-        })
+
+            //must place navigation setting next to navigationview
+            .onAppear(perform: {
+                bleConnection.connect(peripheral!, periModel)
+            })
     }
 }
 
