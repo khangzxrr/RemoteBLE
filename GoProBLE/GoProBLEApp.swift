@@ -11,7 +11,7 @@ import SwiftUI
 struct GoProBLEApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BlesView()
         }
     }
 }
