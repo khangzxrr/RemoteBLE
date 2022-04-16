@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  RemoteBLE
+
+  Created by Mac on 16/04/2022.
+  
+*/
+
+"authentication:introduction" = "Xin chào, trước khi bạn bắt đầu\nnếu gặp bất cứ lỗi gì xin hãy liên hệ với mình theo link bên dưới\nMình xin cám ơn và rất hân hạnh được hỗ trợ các bạn";
+"authentication:facebook" = "Link facebook: Võ Ngọc Khang";
+"authentication:accept" = "Đồng ý và tiếp tục";
+"authentication:title" = "Lưu ý nhỏ";
+
+"blescanning:waiting" = "Vui lòng chờ...1..2..3...";
+"blescanning:title" = "Quét các thiết bị";
+"blescanning:clearandrescan" = "Xoá và quét lại";

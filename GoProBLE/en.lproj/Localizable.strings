@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  RemoteBLE
+
+  Created by Mac on 16/04/2022.
+  
+*/
+
+"authentication:introduction" = "Hello before...";

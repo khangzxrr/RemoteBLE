@@ -17,13 +17,14 @@ struct BLEScanningView: View {
     @State var animatedList = false
     
     var body: some View {
-        VStack {
-            HStack{
-                Text("Please wait...1 2 3....").opacity($bleConnection.scannedBLEDevices.count > 0 ? 0 : 1)
+        VStack(alignment: .center, spacing: 20) {
+            HStack {
+                Text("blescanning:waiting").opacity($bleConnection.scannedBLEDevices.count > 0 ? 0 : 1)
+                    .padding()
                 
                 Spacer()
                 
-                Button("Clear and rescan") {
+                Button("blescanning:clearandrescan") {
                     bleConnection.scannedBLEDevices.removeAll()
                 }
                 .foregroundColor(.white)
@@ -39,7 +40,7 @@ struct BLEScanningView: View {
             }
             .animation(.easeOut(duration: 2), value: animatedList)
             
-            .navigationBarTitle("BLE Devices")
+            .navigationBarTitle("blescanning:title")
             .onAppear(perform: {
                 bleConnection.startCentralManager()
                 

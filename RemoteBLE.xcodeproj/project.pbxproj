@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042680892809F39A00C8AD37 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0426808B2809F39A00C8AD37 /* Localizable.strings */; };
 		042CBF9827CBC36800D56FFB /* GoProBLEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBF9727CBC36800D56FFB /* GoProBLEApp.swift */; };
 		042CBF9A27CBC36800D56FFB /* BLEScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBF9927CBC36800D56FFB /* BLEScanningView.swift */; };
 		042CBF9F27CBC36900D56FFB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042CBF9E27CBC36900D56FFB /* Preview Assets.xcassets */; };
@@ -54,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0426808A2809F39A00C8AD37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0426808C2809F3A400C8AD37 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		042CBF9427CBC36800D56FFB /* RemoteBLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteBLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		042CBF9727CBC36800D56FFB /* GoProBLEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProBLEApp.swift; sourceTree = "<group>"; };
 		042CBF9927CBC36800D56FFB /* BLEScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEScanningView.swift; sourceTree = "<group>"; };
@@ -119,6 +122,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042680772809EE3600C8AD37 /* localizes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = localizes;
+			sourceTree = "<group>";
+		};
 		042CBF8B27CBC36800D56FFB = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 		042CBF9627CBC36800D56FFB /* GoProBLE */ = {
 			isa = PBXGroup;
 			children = (
+				042680772809EE3600C8AD37 /* localizes */,
 				047FDC7D28097BA00049A502 /* BLE */,
 				047FDC7C28097B790049A502 /* Peripheral */,
 				047FDC7B28097B600049A502 /* Utils */,
@@ -156,6 +167,7 @@
 				04CB39522806EDC600949CCC /* Assets.xcassets */,
 				047FDC742809784E0049A502 /* UserModel.xcdatamodeld */,
 				042CBF9D27CBC36900D56FFB /* Preview Content */,
+				0426808B2809F39A00C8AD37 /* Localizable.strings */,
 			);
 			path = GoProBLE;
 			sourceTree = "<group>";
@@ -355,6 +367,7 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
 			);
 			mainGroup = 042CBF8B27CBC36800D56FFB;
 			productRefGroup = 042CBF9527CBC36800D56FFB /* Products */;
@@ -374,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04CB39532806EDC600949CCC /* Assets.xcassets in Resources */,
+				042680892809F39A00C8AD37 /* Localizable.strings in Resources */,
 				047FDC71280926410049A502 /* Auth0.plist in Resources */,
 				042CBF9F27CBC36900D56FFB /* Preview Assets.xcassets in Resources */,
 			);
@@ -556,11 +570,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		0426808B2809F39A00C8AD37 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0426808A2809F39A00C8AD37 /* en */,
+				0426808C2809F3A400C8AD37 /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		042CBFB627CBC36A00D56FFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -608,7 +635,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -622,6 +649,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -663,7 +691,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

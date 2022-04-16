@@ -14,30 +14,30 @@ struct AuthenticationView: View {
     
     var body: some View {
         NavigationView{
-            VStack(alignment: .leading, spacing: 2.0){
+            VStack(alignment: .center, spacing: 15.0){
                 NavigationLink(destination: BLEScanningView().navigationBarBackButtonHidden(true), isActive: $accept){
                 }
                 .hidden()
                 
-                Text("Hi, before you can continue. \nif you encounter any bugs\nplease contact me via\n")
+                Text("authentication:introduction")
                     .padding(.top, 20)
+                    //.padding(.leading, 20)
+                    .padding(.horizontal, 20)
 
+                Link("authentication:facebook", destination: URL(string: "fb://profile/meracle.vn")!).padding()
                 
-                Link("Click here > Facebook: Võ Ngọc Khang", destination: URL(string: "fb://profile/meracle.vn")!).padding()
-                
-                
-                Button("Accept and continue") {
+                Button("authentication:accept") {
                     accept = true
                 }
                 .padding()
                 .background(Color.blue)
-                .cornerRadius(20)
+                .cornerRadius(30)
                 .foregroundColor(.white)
                 
                 Spacer()
                 
             }
-            .navigationTitle("Authentication")
+            .navigationTitle("authentication:title")
             .navigationBarTitleDisplayMode(.large)
            
            
