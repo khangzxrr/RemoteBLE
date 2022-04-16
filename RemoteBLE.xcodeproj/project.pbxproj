@@ -19,6 +19,7 @@
 		04411C6827CE266C00E2AC19 /* GoProServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411C6727CE266C00E2AC19 /* GoProServices.swift */; };
 		04411C6A27CE285900E2AC19 /* GoPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411C6927CE285900E2AC19 /* GoPro.swift */; };
 		04411C6C27CE3B2800E2AC19 /* GoProCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411C6B27CE3B2800E2AC19 /* GoProCommand.swift */; };
+		04542213280AF8E3003B5ABB /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 04542212280AF8E3003B5ABB /* Readme.md */; };
 		04684E8C27DE20F30048F1D0 /* GoProDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */; };
 		04684E8E27DE21580048F1D0 /* GoProEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8D27DE21580048F1D0 /* GoProEnums.swift */; };
 		04684E9027DE28E80048F1D0 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8F27DE28E80048F1D0 /* DataExtension.swift */; };
@@ -72,6 +73,7 @@
 		04411C6727CE266C00E2AC19 /* GoProServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProServices.swift; sourceTree = "<group>"; };
 		04411C6927CE285900E2AC19 /* GoPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPro.swift; sourceTree = "<group>"; };
 		04411C6B27CE3B2800E2AC19 /* GoProCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProCommand.swift; sourceTree = "<group>"; };
+		04542212280AF8E3003B5ABB /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProDataParser.swift; sourceTree = "<group>"; };
 		04684E8D27DE21580048F1D0 /* GoProEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProEnums.swift; sourceTree = "<group>"; };
 		04684E8F27DE28E80048F1D0 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		042CBF8B27CBC36800D56FFB = {
 			isa = PBXGroup;
 			children = (
+				04542212280AF8E3003B5ABB /* Readme.md */,
 				047FDC6E280923AA0049A502 /* Auth0.plist */,
 				043017ED2809215C0034381B /* RemoteBLE-Info.plist */,
 				042CBF9627CBC36800D56FFB /* GoProBLE */,
@@ -386,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04542213280AF8E3003B5ABB /* Readme.md in Resources */,
 				04CB39532806EDC600949CCC /* Assets.xcassets in Resources */,
 				042680892809F39A00C8AD37 /* Localizable.strings in Resources */,
 				047FDC71280926410049A502 /* Auth0.plist in Resources */,
