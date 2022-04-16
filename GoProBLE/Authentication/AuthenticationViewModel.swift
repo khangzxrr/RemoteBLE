@@ -34,7 +34,7 @@ class AuthenticationViewModel : ObservableObject {
             user  = try container.viewContext.fetch(userFetchRequest).first
             
             if user != nil {
-                print(user)
+                print(user!)
                 isLogged = true
             }
             

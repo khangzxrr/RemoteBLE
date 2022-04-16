@@ -1,1 +1,2 @@
-* A simple gopro remote app for Iphone
+# A simple gopro remote app for Iphone
+
