@@ -12,10 +12,15 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
     @Published var errorMessage = ""
 
     @Published var successConnect = false
+
     
     var periModel: PeripheralModel? =  nil
     
-    var previousPeripheral: CBPeripheral! = nil
+    var currentPeripheral: CBPeripheral! = nil
+    
+    //When BLE get timeout exception may cause by gopro turn on too slow
+    //this variable use to identicate we already retry to connect or not
+    private var retriedToConnect = false
     
     func startCentralManager() {
         self.centralManager = CBCentralManager(delegate: self, queue: nil)
@@ -82,22 +87,26 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
     public func connect(_ peripheral: CBPeripheral,  _ periModel : PeripheralModel){
         centralManager.connect(peripheral, options: nil)
         self.periModel = periModel
+        
+        //update current peripheral
+        currentPeripheral = peripheral
     }
     
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("connected")
         periModel!.initPeripheral(peri: peripheral)
-        successConnect = true
         
+        
+        successConnect = true
         errorMessage = ""
     }
     
     
     public func reconnecting() {
         
-        if previousPeripheral != nil {
-            centralManager.connect(previousPeripheral, options: nil)
+        if currentPeripheral != nil {
+            centralManager.connect(currentPeripheral, options: nil)
             errorMessage = "Reconnecting..."
         }
         
@@ -106,12 +115,22 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         errorMessage = "Disconnected... Tap to reconnect"
         
-        previousPeripheral = peripheral
+        currentPeripheral = peripheral
         successConnect = false
     }
     
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        showError("Fail to connect peripheral")
+        
+        if !retriedToConnect {
+            print("retry connect")
+            reconnecting()
+            retriedToConnect = true
+        } else {
+            showError("Fail to connect peripheral")
+            print(error)
+        }
+        
+        
     }
     
     // Handles the result of the scan

@@ -31,6 +31,7 @@ class AuthenticationViewModel : ObservableObject {
     func loadUser(){
         let userFetchRequest = UserModel.fetchRequest()
         do {
+            
             user  = try container.viewContext.fetch(userFetchRequest).first
             
             if user != nil {
