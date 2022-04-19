@@ -14,12 +14,19 @@ struct BLEScanningView: View {
     //StateObject is the owner of the object, other views use this shared object
     @StateObject var bleConnection = BLEConnection()
     
+    @State var selectedPeripheral = false
     @State var animatedList = false
     
     var body: some View {
+        
+        NavigationLink("",
+                       destination: PeripheralView(periModel: bleConnection.periModel, bleConnection: bleConnection),
+                       isActive: $selectedPeripheral)
+            .hidden()
+                       
         VStack(alignment: .center, spacing: 20) {
             HStack {
-                Text("blescanning:waiting").opacity($bleConnection.scannedBLEDevices.count > 0 ? 0 : 1)
+                Text("blescanning:waiting").opacity(bleConnection.scannedBLEDevices.count > 0 ? 0 : 1)
                     .padding()
                 
                 Spacer()
@@ -35,15 +42,21 @@ struct BLEScanningView: View {
             
            
             List(bleConnection.scannedBLEDevices, id: \.identifier) { scannedBLEDevice in
-                NavigationLink(scannedBLEDevice.name!, destination: PeripheralView(peripheral: scannedBLEDevice).environmentObject(bleConnection).navigationBarBackButtonHidden(true)
-                )
+                
+                Button(scannedBLEDevice.name!){
+                    bleConnection.setSelectedPeripheral(scannedBLEDevice)
+                    
+                    bleConnection.connect()
+                    
+                    selectedPeripheral = true //active flag to navigate to PeripheralView
+                }
             }
             .animation(.easeOut(duration: 2), value: animatedList)
             
             .navigationBarTitle("blescanning:title")
             .onAppear(perform: {
+                print("hi")
                 bleConnection.startCentralManager()
-                
             })
         }
         

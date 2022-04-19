@@ -4,6 +4,7 @@ import CoreBluetooth
 import SwiftUI
 
 open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
+    
     private var centralManager: CBCentralManager! = nil
     
     @Published var scannedBLEDevices: [CBPeripheral] = []
@@ -11,11 +12,10 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
     @Published var isShowErrorMessage = false
     @Published var errorMessage = ""
 
-    @Published var successConnect = false
-
+    var periModel: PeripheralModel! = PeripheralModel()
     
-    var periModel: PeripheralModel? =  nil
-    
+    //periModel is delegate of CBPeripheral
+    //which used to perform gopro action
     var currentPeripheral: CBPeripheral! = nil
     
     //When BLE get timeout exception may cause by gopro turn on too slow
@@ -50,6 +50,7 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
         self.isShowErrorMessage = true
         self.errorMessage = message
     }
+    
     // Handles BT Turning On/Off
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch (central.state) {
@@ -70,74 +71,84 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
             break
         case .poweredOn:
             print("Central scanning")
-            self.centralManager.scanForPeripherals(withServices: nil)
+            centralManager.scanForPeripherals(withServices: nil)
             break
         default:
             self.showError("Bluetooth is unknown")
             break
         }
         
-        if(central.state != CBManagerState.poweredOn)
-        {
-            // In a real app, you'd deal with all the states correctly
-            return;
-        }
     }
     
-    public func connect(_ peripheral: CBPeripheral,  _ periModel : PeripheralModel){
-        centralManager.connect(peripheral, options: nil)
-        self.periModel = periModel
+    public func connect(){
+        print("connecting...")
         
-        //update current peripheral
-        currentPeripheral = peripheral
+        //MUST CLEAR Scanned devices or the next time you connect another device
+        //BLE will hang, not sure why but this is the fix
+        scannedBLEDevices = []
+        
+        
+        periModel.clearDelegate()
+        periModel.resetStates()
+        centralManager.connect(currentPeripheral, options: nil)
     }
     
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("connected")
-        periModel!.initPeripheral(peri: peripheral)
         
+        periModel.initPeripheral(peri: currentPeripheral)
         
-        successConnect = true
         errorMessage = ""
     }
     
     
     public func reconnecting() {
         
-        if currentPeripheral != nil {
-            centralManager.connect(currentPeripheral, options: nil)
-            errorMessage = "Reconnecting..."
-        }
-        
+        centralManager.connect(currentPeripheral)
+        errorMessage = "Reconnecting..."
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         errorMessage = "Disconnected... Tap to reconnect"
         
         currentPeripheral = peripheral
-        successConnect = false
     }
     
+
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        
+        print("failed to connect")
         if !retriedToConnect {
             print("retry connect")
             reconnecting()
             retriedToConnect = true
         } else {
             showError("Fail to connect peripheral")
-            print(error)
+            print(error!)
         }
         
         
+    }
+    
+    func setSelectedPeripheral(_ peripheral: CBPeripheral){
+        currentPeripheral = peripheral
+    }
+    
+    private func isScannedListContainPeripheralByName(peripheral: CBPeripheral) -> Bool {
+        for peri in scannedBLEDevices {
+            if peri.name!.elementsEqual(peripheral.name!) {
+                return true
+            }
+        }
+        
+        return false
     }
     
     // Handles the result of the scan
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         //print("Peripheral Name: \(String(describing: peripheral.name))  RSSI: \(String(RSSI.doubleValue))")
         
-        if peripheral.name != nil && !scannedBLEDevices.contains(peripheral){
+        if peripheral.name != nil && !isScannedListContainPeripheralByName(peripheral: peripheral) {
             self.scannedBLEDevices.append(peripheral)
         }
         
