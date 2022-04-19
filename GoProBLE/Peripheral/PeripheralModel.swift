@@ -16,7 +16,6 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     
     @Published var isRecording = false
     
-    
     @Published var batteryDisplay = "%"
     @Published var batteryBackground = Color.green
     
@@ -26,7 +25,18 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     @Published var presentBleError = false
     @Published var navigatingBackToScanning = false
     
+    @Published var successDiscoveredCharacteristic = false
+    
+    func resetStates() {
+        successDiscoveredCharacteristic = false
+        presentBleError = false
+        navigatingBackToScanning = false
+    }
+    
     func initPeripheral(peri: CBPeripheral){
+        
+       
+        
         self.peripheral = peri
         
         goPro = GoPro()
@@ -48,6 +58,9 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        
+        successDiscoveredCharacteristic = true
+        
         print("discovered characteristic!!")
         print(service.characteristics!)
         
@@ -90,9 +103,20 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         
     }
     
+    
+    //for safety purpose
+    //remove delegate may release memory or reduce freeze bluetooth function
+    public func clearDelegate() {
+        if peripheral != nil {
+            peripheral.delegate = nil
+        }
+    }
+    
     public func recording(){
         if goPro.CommandCharacteristic == nil {
+            clearDelegate()
             presentBleError = true
+            
             return
         }
         
@@ -100,6 +124,13 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     }
     
     public func stoppingRecord(){
+        if goPro.CommandCharacteristic == nil {
+            clearDelegate()
+            presentBleError = true
+            
+            return
+        }
+        
         peripheral.writeValue(GoProCommand.StopShutter, for: goPro.CommandCharacteristic, type: .withResponse)
     }
     

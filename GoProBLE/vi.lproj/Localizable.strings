@@ -14,3 +14,11 @@
 "blescanning:waiting" = "Vui lòng chờ...1..2..3...";
 "blescanning:title" = "Quét các thiết bị";
 "blescanning:clearandrescan" = "Xoá và quét lại";
+
+"peripheral:totalvideos" = "Tổng số video trên thẻ: ";
+"peripheral:batterylevel" = "Dung lượng pin còn lại: ";
+"peripheral:rec" = "Ghi";
+"peripheral:stop" = "Dừng";
+"peripheral:bluetootherror" = "Lỗi bluetooth";
+"peripheral:bluetootherrordescription" = "Xin hãy đảm bảo rằng bạn kết nối tới gopro thay vì thiết bị khác";
+"peripheral:accepterror" = "Tôi đã hiểu";

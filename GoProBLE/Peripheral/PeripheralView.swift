@@ -10,17 +10,15 @@ import CoreBluetooth
 
 struct PeripheralView: View {
     
-    let peripheral: CBPeripheral?
-    
-    @EnvironmentObject var bleConnection : BLEConnection
-    
     //The rule is this: whichever view is the first to create your object must use @StateObject, to tell SwiftUI it is the owner of the data and is responsible for keeping it alive. All other views must use @ObservedObject, to tell SwiftUI they want to watch the object for changes but don’t own it directly
-    @StateObject var periModel = PeripheralModel()
-    
+    @ObservedObject var periModel : PeripheralModel
+    @ObservedObject var bleConnection : BLEConnection
     
     @State var busyButtonColorChange = true
     
     var body: some View {
+        
+        
             VStack(alignment: .center, spacing: 20){
                 Spacer()
                 
@@ -30,14 +28,18 @@ struct PeripheralView: View {
                     }
                 }
                 
+                
+                //This navigation link will bring back ScanningView when error happen
                 NavigationLink(destination: BLEScanningView().navigationBarBackButtonHidden(true),
                                isActive: $periModel.navigatingBackToScanning){}
                     .hidden()
+                
+                
                 .alert(isPresented: $periModel.presentBleError) {
                     Alert(
-                        title: Text("Bluetooth error"),
-                        message: Text("Peripheral does not have command service, make sure you select only gopro device!"),
-                        dismissButton: .default(Text("Got it!")) {
+                        title: Text("peripheral:bluetootherror"),
+                        message: Text("peripheral:bluetootherrordescription"),
+                        dismissButton: .default(Text("peripheral:accepterror")) {
                             periModel.navigatingBackToScanning = true
                         }
                     )
@@ -49,11 +51,11 @@ struct PeripheralView: View {
                         Text(periModel.currentDate, style: .date).bold()
                     }
                     HStack {
-                        Text("Total videos in SD card: ")
+                        Text("peripheral:totalvideos")
                         Text(periModel.totalVideos).bold()
                     }
                     HStack{
-                        Text("Battery Level:")
+                        Text("peripheral:batterylevel")
                         Text(periModel.batteryDisplay).bold()
                     }
                     .padding()
@@ -65,8 +67,8 @@ struct PeripheralView: View {
                     .transition(.slide)
                     
                     HStack(alignment: .center, spacing: 20){
-                        Button(!periModel.isRecording ? "Rec" : "Stop"){
-                            print("record")
+                        Button(!periModel.isRecording ? "peripheral:rec" : "peripheral:stop"){
+                            
                             if !periModel.isRecording {
                                 periModel.recording()
                                 
@@ -76,6 +78,7 @@ struct PeripheralView: View {
 
                         }
                         .buttonStyle(ShutterButton())
+                        .disabled(!periModel.successDiscoveredCharacteristic)
                         
                         Button(""){
                             
@@ -98,22 +101,13 @@ struct PeripheralView: View {
                     
                     Spacer()
                     
-                }.blur(radius: bleConnection.successConnect ? 0 : 20)
+                }.blur(radius: periModel.successDiscoveredCharacteristic ? 0 : 20)
                
             }
-            .navigationTitle(peripheral!.name!)
-
-            //must place navigation setting next to navigationview
-            .onAppear(perform: {
-                bleConnection.connect(peripheral!, periModel)
-            })
+            .navigationTitle("")
+  
     }
+    
 }
+    
 
-struct PeripheralView_Previews: PreviewProvider {
-    @State static var peri : CBPeripheral? = nil
-    static var previews: some View {
-        
-        PeripheralView(peripheral: peri!)
-    }
-}
