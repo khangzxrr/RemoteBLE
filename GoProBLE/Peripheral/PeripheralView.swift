@@ -20,21 +20,12 @@ struct PeripheralView: View {
         
         
             VStack(alignment: .center, spacing: 20){
-                Spacer()
                 
-                VStack(alignment: .leading, spacing: 20) {
-                    Text(bleConnection.errorMessage).bold().onTapGesture {
-                        bleConnection.reconnecting()
-                    }
+                Text(bleConnection.errorMessage).bold().foregroundColor(.red).onTapGesture {
+                    bleConnection.reconnecting()
+                    //Reconnecting issue: When disconnect too long then connect back, it will hang without throw any exception
+                    
                 }
-                
-                
-                //This navigation link will bring back ScanningView when error happen
-                NavigationLink(destination: BLEScanningView().navigationBarBackButtonHidden(true),
-                               isActive: $periModel.navigatingBackToScanning){}
-                    .hidden()
-                
-                
                 .alert(isPresented: $periModel.presentBleError) {
                     Alert(
                         title: Text("peripheral:bluetootherror"),
@@ -45,8 +36,14 @@ struct PeripheralView: View {
                     )
                 }
                
-                
                 VStack{
+                    HStack {
+                        Spacer()
+                        Button("peripheral:puttosleep") {
+                            periModel.putToSleep()
+                        }
+                    }.padding()
+                    
                     HStack {
                         Text(periModel.currentDate, style: .date).bold()
                     }
@@ -64,6 +61,7 @@ struct PeripheralView: View {
                             .fill(periModel.batteryBackground)
                             .shadow(color: .gray, radius: 2, x: 0, y: 2)
                     )
+                    .foregroundColor(.white)
                     .transition(.slide)
                     
                     HStack(alignment: .center, spacing: 20){
@@ -80,6 +78,7 @@ struct PeripheralView: View {
                         .buttonStyle(ShutterButton())
                         .disabled(!periModel.successDiscoveredCharacteristic)
                         
+                        //Blinking button
                         Button(""){
                             
                         }
@@ -99,13 +98,55 @@ struct PeripheralView: View {
                        
                     }
                     
+                    HStack(alignment: .center, spacing: 30) {
+                        Button("Timelapse")  {
+                            periModel.setMode(.Timelapse)
+                        }
+                        .padding()
+                        .background(periModel.currentMode == .Timelapse ? Color.blue : Color.clear)
+                        .cornerRadius(30)
+                        .foregroundColor(periModel.currentMode == .Timelapse ? Color.white : Color.black)
+                        
+                        Button("Video") {
+                            periModel.setMode(.Video)
+                        }
+                        .padding()
+                        .background(periModel.currentMode == .Video ? Color.blue : Color.clear)
+                        .cornerRadius(30)
+                        .foregroundColor(periModel.currentMode == .Video ? Color.white : Color.black)
+                        
+                        Button("Photo") {
+                            periModel.setMode(.Photo)
+                        }
+                        .padding()
+                        .background(periModel.currentMode == .Photo ? Color.blue : Color.clear)
+                        .cornerRadius(30)
+                        .foregroundColor(periModel.currentMode == .Photo ? Color.white : Color.black)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 0) {
+                        NavigationLink("peripheral:setting", destination: SettingView())
+                            .opacity(periModel.currentMode == .Video ? 1 : 0)
+                    }
+                    .padding(30)
+                    
                     Spacer()
+                    
+                    NavigationLink(destination: BLEScanningView().navigationBarBackButtonHidden(true),
+                                   isActive: $periModel.navigatingBackToScanning){}
+                        .hidden()
                     
                 }.blur(radius: periModel.successDiscoveredCharacteristic ? 0 : 20)
                
             }
-            .navigationTitle("")
-  
+            .navigationTitle(bleConnection.currentPeripheral.name!)
+            .onAppear() {
+                UIApplication.shared.isIdleTimerDisabled = true
+            }
+            .onDisappear {
+                UIApplication.shared.isIdleTimerDisabled = false
+                
+            }
     }
     
 }

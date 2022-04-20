@@ -15,6 +15,7 @@
 "blescanning:title" = "Quét các thiết bị";
 "blescanning:clearandrescan" = "Xoá và quét lại";
 
+
 "peripheral:totalvideos" = "Tổng số video trên thẻ: ";
 "peripheral:batterylevel" = "Dung lượng pin còn lại: ";
 "peripheral:rec" = "Ghi";
@@ -22,3 +23,7 @@
 "peripheral:bluetootherror" = "Lỗi bluetooth";
 "peripheral:bluetootherrordescription" = "Xin hãy đảm bảo rằng bạn kết nối tới gopro thay vì thiết bị khác";
 "peripheral:accepterror" = "Tôi đã hiểu";
+"peripheral:setting" = "Cài đặt";
+"peripheral:puttosleep" = "Tắt gopro tạm thời";
+"peripheral:disconnected" = "Đã ngắt kết nối.. nhấn vào đây để kết nối lại";
+"peripheral:reconnecting" = "Đang kết nối lại...";
