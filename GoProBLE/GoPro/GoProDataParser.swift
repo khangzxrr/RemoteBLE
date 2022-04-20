@@ -45,6 +45,29 @@ class GoProDataParser {
         return Int(valueInt8)
     }
     
+    public static func parseCurrentMode(_ statusBytesArray: inout [UInt8]) -> Mode {
+        let parsedResult = parse_ValueLength_Data(&statusBytesArray)
+        
+        let valueInt32 = UInt32(parsedResult.data.hexEncodedString(), radix: 16)
+        
+        statusBytesArray.removeFirst(parsedResult.valueLength) //remove value bytes
+        
+        let modeID = Int(valueInt32!)
+        
+        switch modeID {
+        case 1000:
+            return .Video
+        case 1001:
+            return .Photo
+        case 1002:
+            return .Timelapse
+        default:
+            break
+        }
+        
+        return .Video
+    }
+    
     public static func parseTotalVideosInSDCard(_ statusBytesArray: inout [UInt8]) -> Int {
         let parsedResult = parse_ValueLength_Data(&statusBytesArray)
         

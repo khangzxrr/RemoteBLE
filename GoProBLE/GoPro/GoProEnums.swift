@@ -17,3 +17,9 @@ enum SDCard {
     case Swapped
     case Unknown
 }
+
+public enum Mode {
+    case Timelapse
+    case Video
+    case Photo
+}

@@ -13,6 +13,18 @@ class GoProCommand {
     private static var StopShutterHex : [UInt8] = [0x03, 0x01, 0x01, 0x00]
     public static var StopShutter = Data(StopShutterHex)
     
+    private static var SetVideoModeHex : [UInt8] = [0x04, 0x3E, 0x02, 0x03, 0xE8]
+    public static var SetVideoMode = Data(SetVideoModeHex)
+    
+    private static var SetPhotoModeHex : [UInt8] = [0x04, 0x3E, 0x02, 0x03, 0xE9]
+    public static var SetPhotoMode = Data(SetPhotoModeHex)
+    
+    private static var SetTimelapseModeHex : [UInt8] = [0x04, 0x3E, 0x02, 0x03, 0xEA]
+    public static var SetTimelapseMode = Data(SetTimelapseModeHex)
+    
+    private static var PutToSleepHex : [UInt8] = [0x01, 0x05]
+    public static var PutToSleep = Data(PutToSleepHex)
+    
     private static func GenerateCurrentDateHex() -> [UInt8] {
         let date = Date()
         
@@ -46,7 +58,9 @@ class GoProCommand {
     //0x46 = Battery percent
     //0x21 = sd card status
     //0x27 = total videos
-    private static var GetAllStatusHex : [UInt8] = [0x05, 0x53, 0x46, 0x21, 0x27, 0x08]
+    //0x08 = is camera buysy
+    //0x60 = current mode
+    private static var GetAllStatusHex : [UInt8] = [0x06, 0x53, 0x46, 0x21, 0x27, 0x08, 0x60]
     public static var GetAllStatus = Data(GetAllStatusHex)
     
 }
