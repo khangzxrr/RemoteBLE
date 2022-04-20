@@ -25,23 +25,13 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
     func startCentralManager() {
         self.centralManager = CBCentralManager(delegate: self, queue: nil)
         print("Central Manager State: \(self.centralManager.state)")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.centralManagerDidUpdateState(self.centralManager)
-        }
+        
     }
     
-    func stopScanning(){
-        centralManager.stopScan()
-    }
     
     func clearAndRescan(){
         scannedBLEDevices.removeAll()
-        
         centralManager.stopScan()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.centralManagerDidUpdateState(self.centralManager)
-        }
         
     }
     
@@ -53,6 +43,9 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
     
     // Handles BT Turning On/Off
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        
+        scannedBLEDevices = [] //remove old peripherals
+        
         switch (central.state) {
         case .unsupported:
             self.showError("Bluetooth is unsupported")
@@ -97,7 +90,7 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("connected")
         
-        periModel.initPeripheral(peri: currentPeripheral)
+        periModel.initPeripheral(peri: currentPeripheral, bleConnection: self)
         
         errorMessage = ""
     }
@@ -106,11 +99,13 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
     public func reconnecting() {
         
         centralManager.connect(currentPeripheral)
-        errorMessage = "Reconnecting..."
+        errorMessage = NSLocalizedString("peripheral:reconnecting", comment:  "reconnecting message")
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        errorMessage = "Disconnected... Tap to reconnect"
+        errorMessage = NSLocalizedString("peripheral:disconnected", comment:  "disconnected message")
+        
+        retriedToConnect = false
         
         currentPeripheral = peripheral
     }
@@ -124,6 +119,7 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
             retriedToConnect = true
         } else {
             showError("Fail to connect peripheral")
+            retriedToConnect = false
             print(error!)
         }
         

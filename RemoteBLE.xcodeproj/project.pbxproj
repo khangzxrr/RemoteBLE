@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04172145280EBBAB006F237A /* TempDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04172144280EBBAB006F237A /* TempDataContainer.swift */; };
+		04172148280ECC01006F237A /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04172147280ECC01006F237A /* SettingView.swift */; };
 		042680892809F39A00C8AD37 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0426808B2809F39A00C8AD37 /* Localizable.strings */; };
 		042CBF9827CBC36800D56FFB /* GoProBLEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBF9727CBC36800D56FFB /* GoProBLEApp.swift */; };
 		042CBF9A27CBC36800D56FFB /* BLEScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CBF9927CBC36800D56FFB /* BLEScanningView.swift */; };
@@ -23,6 +25,7 @@
 		04684E8C27DE20F30048F1D0 /* GoProDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */; };
 		04684E8E27DE21580048F1D0 /* GoProEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8D27DE21580048F1D0 /* GoProEnums.swift */; };
 		04684E9027DE28E80048F1D0 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8F27DE28E80048F1D0 /* DataExtension.swift */; };
+		0478B05C280FB21900FFCF56 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478B05B280FB21900FFCF56 /* SettingViewModel.swift */; };
 		047FDC70280924440049A502 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC6F280924440049A502 /* AuthenticationView.swift */; };
 		047FDC71280926410049A502 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047FDC6E280923AA0049A502 /* Auth0.plist */; };
 		047FDC72280926420049A502 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047FDC6E280923AA0049A502 /* Auth0.plist */; };
@@ -56,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04172144280EBBAB006F237A /* TempDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDataContainer.swift; sourceTree = "<group>"; };
+		04172147280ECC01006F237A /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		0426808A2809F39A00C8AD37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0426808C2809F3A400C8AD37 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		042CBF9427CBC36800D56FFB /* RemoteBLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteBLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +82,7 @@
 		04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProDataParser.swift; sourceTree = "<group>"; };
 		04684E8D27DE21580048F1D0 /* GoProEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProEnums.swift; sourceTree = "<group>"; };
 		04684E8F27DE28E80048F1D0 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		0478B05B280FB21900FFCF56 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		047FDC6E280923AA0049A502 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		047FDC6F280924440049A502 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		047FDC752809784E0049A502 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
@@ -124,6 +130,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04172146280ECBE4006F237A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				04172147280ECC01006F237A /* SettingView.swift */,
+				0478B05B280FB21900FFCF56 /* SettingViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		042680772809EE3600C8AD37 /* localizes */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +176,7 @@
 			children = (
 				042680772809EE3600C8AD37 /* localizes */,
 				047FDC7D28097BA00049A502 /* BLE */,
+				04172146280ECBE4006F237A /* Settings */,
 				047FDC7C28097B790049A502 /* Peripheral */,
 				047FDC7B28097B600049A502 /* Utils */,
 				047FDC7A28097B3A0049A502 /* CustomDesigns */,
@@ -243,6 +259,7 @@
 			children = (
 				04C98BA027D12F120030403F /* PeripheralModel.swift */,
 				04FE8BAA27CCE50F007AF859 /* PeripheralView.swift */,
+				04172144280EBBAB006F237A /* TempDataContainer.swift */,
 			);
 			path = Peripheral;
 			sourceTree = "<group>";
@@ -524,8 +541,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				04684E8C27DE20F30048F1D0 /* GoProDataParser.swift in Sources */,
+				0478B05C280FB21900FFCF56 /* SettingViewModel.swift in Sources */,
 				04411C6627CE233600E2AC19 /* GoProCharacteristics.swift in Sources */,
 				04CB5AAB27DA4B6900760843 /* ShutterButton.swift in Sources */,
+				04172148280ECC01006F237A /* SettingView.swift in Sources */,
+				04172145280EBBAB006F237A /* TempDataContainer.swift in Sources */,
 				04411C6827CE266C00E2AC19 /* GoProServices.swift in Sources */,
 				042CBF9A27CBC36800D56FFB /* BLEScanningView.swift in Sources */,
 				047FDC762809784E0049A502 /* UserModel.xcdatamodeld in Sources */,
