@@ -139,13 +139,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		042680772809EE3600C8AD37 /* localizes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = localizes;
-			sourceTree = "<group>";
-		};
 		042CBF8B27CBC36800D56FFB = {
 			isa = PBXGroup;
 			children = (
@@ -174,7 +167,6 @@
 		042CBF9627CBC36800D56FFB /* GoProBLE */ = {
 			isa = PBXGroup;
 			children = (
-				042680772809EE3600C8AD37 /* localizes */,
 				047FDC7D28097BA00049A502 /* BLE */,
 				04172146280ECBE4006F237A /* Settings */,
 				047FDC7C28097B790049A502 /* Peripheral */,

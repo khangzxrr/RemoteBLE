@@ -11,8 +11,11 @@ import SwiftUI
 
 public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  {
     private var peripheral: CBPeripheral! = nil
+    private var bleConnection : BLEConnection! = nil
     
     var goPro : GoPro! = nil
+    
+    @Published var currentMode = Mode.Video
     
     @Published var isRecording = false
     
@@ -27,15 +30,20 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     
     @Published var successDiscoveredCharacteristic = false
     
+    private var tempData : TempDataContainer! = nil
+    
+    
     func resetStates() {
         successDiscoveredCharacteristic = false
         presentBleError = false
         navigatingBackToScanning = false
     }
     
-    func initPeripheral(peri: CBPeripheral){
+    func initPeripheral(peri: CBPeripheral, bleConnection : BLEConnection){
         
-       
+        //reference to bleConnection class to perform connect, reconnect
+        self.bleConnection = bleConnection
+        
         
         self.peripheral = peri
         
@@ -103,7 +111,6 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         
     }
     
-    
     //for safety purpose
     //remove delegate may release memory or reduce freeze bluetooth function
     public func clearDelegate() {
@@ -112,28 +119,48 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         }
     }
     
-    public func recording(){
+    public func checkingPeripheralStateBeforePerformAction() {
         if goPro.CommandCharacteristic == nil {
-            clearDelegate()
             presentBleError = true
-            
             return
         }
         
-        peripheral.writeValue(GoProCommand.StartShutter, for: goPro.CommandCharacteristic, type: .withResponse)
+        if peripheral.state == .disconnected {
+            successDiscoveredCharacteristic = false
+            bleConnection.reconnecting()
+        }
+    }
+    
+    public func sendingCommand(_ data: Data){
+        checkingPeripheralStateBeforePerformAction()
+        peripheral.writeValue(data, for: goPro.CommandCharacteristic, type: .withResponse)
+    }
+    
+    public func recording(){
+        sendingCommand(GoProCommand.StartShutter)
     }
     
     public func stoppingRecord(){
-        if goPro.CommandCharacteristic == nil {
-            clearDelegate()
-            presentBleError = true
-            
-            return
-        }
-        
-        peripheral.writeValue(GoProCommand.StopShutter, for: goPro.CommandCharacteristic, type: .withResponse)
+        sendingCommand(GoProCommand.StopShutter)
     }
     
+    public func putToSleep(){
+        sendingCommand(GoProCommand.PutToSleep)
+    }
+    
+    public func setMode(_ mode : Mode){
+        switch mode {
+        case .Photo:
+            sendingCommand(GoProCommand.SetPhotoMode)
+            break
+        case .Video:
+            sendingCommand(GoProCommand.SetVideoMode)
+            break
+        case .Timelapse:
+            sendingCommand(GoProCommand.SetTimelapseMode)
+            break
+        }
+    }
     
     private func processUpdatedData(_ statusBytesOriginal: Data) {
         
@@ -177,13 +204,16 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
                     batteryBackground = Color.red
                 }
                 
-             
-                
                 batteryDisplay = String(batteryPercent) + " %"
-                
-                
                 break
+            case 0x60:
+                print("Current mode")
                 
+                let modeID = GoProDataParser.parseCurrentMode(&statusBytesArray)
+                currentMode = modeID
+                
+                print(modeID)
+                break
             default:
                 break
             }
@@ -194,25 +224,69 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         }
     }
     
+    public func trimUnnessecsaryByteAndUpdateData(_ originalBytes: Data) {
+        var bytesArray = originalBytes
+        
+        print("bytes: ", bytesArray.hexEncodedString())
+        
+        if bytesArray.first == 0x53 { //status update
+            bytesArray.removeFirst(2) //0x53 00 00
+            print("bytes: ", bytesArray.hexEncodedString())
+            processUpdatedData(bytesArray)
+        } else if bytesArray.first == 0x93 { //push status update
+            bytesArray.removeFirst(2)
+            processUpdatedData(bytesArray)
+        }
+    }
+    
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        print("Updated value!")
         
         if characteristic == goPro.StatusResponseCharacteristic {
             print("status response received!")
             var bytesArray = characteristic.value!
-            
+
             print(bytesArray.hexEncodedString())
             
-            bytesArray.removeFirst() //remove the length
-            
-            if bytesArray.first == 0x53 { //status update
-                bytesArray.removeFirst(2) //0x53 00 00
-                processUpdatedData(bytesArray)
-            } else if bytesArray.first == 0x93 { //push status update
-                bytesArray.removeFirst(2)
-                processUpdatedData(bytesArray)
+            //0x20 mean data does not fit in one package
+            //so it split into multiple package
+            //we will listen then concat it as one and put it to processUpdateData function as normal
+            if bytesArray.first! == 0x20 {
+                bytesArray.removeFirst() //remove 0x20 identicator
+                let expectedLength = Int(bytesArray.removeFirst())
+                
+                tempData = TempDataContainer(byteArray: bytesArray,
+                                             expectedLength: expectedLength,
+                                             removedBytesLength: 0)
+                
+                return
             }
             
+            if bytesArray.first! >= 0x80 && bytesArray.first! <= 0x8F {
+                bytesArray.removeFirst() //remove 0x80...0x8F continue package identicator
+                
+                tempData.byteArray.append(contentsOf: bytesArray)
+                
+            } else { //not continous package
+                
+                bytesArray.removeFirst() //remove the length
+                trimUnnessecsaryByteAndUpdateData(bytesArray)
+            }
+            
+            if tempData != nil {
+                //if enough data
+                if tempData.byteArray.count  == tempData.expectedLength {
+                    trimUnnessecsaryByteAndUpdateData(tempData.byteArray)
+                
+                    tempData = nil
+                }
+            }
+            
+          
+
+            
+
+            
+
           
         }
     }
