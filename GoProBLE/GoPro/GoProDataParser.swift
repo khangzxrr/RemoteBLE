@@ -20,10 +20,21 @@ class GoProDataParser {
         
         let valueDataConverted = Data(value)
         
-        print("Value length: ", bytesLength)
-        print("Data: ", valueDataConverted.hexEncodedString())
+        //print("Value length: ", bytesLength)
+        //print("Data: ", valueDataConverted.hexEncodedString())
         
         return (bytesLength, valueDataConverted)
+    }
+    
+    public static func parseMinLeft(_ statusBytesArray: inout [UInt8]) -> String {
+        let data = parse_ValueLength_Data(&statusBytesArray)
+        
+        let valueInt32 = UInt32(data.data.hexEncodedString(), radix: 16)! / 60
+        
+        statusBytesArray.removeFirst(data.valueLength) //remove value bytes
+        
+        print(valueInt32 / 60, "timeleft: ", valueInt32 % 60)
+        return String(valueInt32 / 60) + "H:" + String(valueInt32 % 60) + "M"
     }
     
     public static func parse_CameraIsBusy(_ statusBytesArray: inout [UInt8]) -> Bool {

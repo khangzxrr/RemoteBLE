@@ -1,0 +1,70 @@
+//
+//  GoProSettingCommands.swift
+//  RemoteBLE
+//
+//  Created by Mac on 21/04/2022.
+//
+
+import Foundation
+import CoreBluetooth
+
+class SettingCommands {
+    //0x02:resolution   0x09: 1080p   0x04: 2.7k    0x01: 4K    0x00: 5K
+    
+    //0x03:fps  0x0A: 24    0x08: 30    0x05: 60    0x01: 120   0x00: 240
+    
+    //0x79:lens 0x02: Narrow    0x04: Linear    0x00: Wide     0x03: SuperView
+    
+    //0x87:hypersmooth  0x01: ON    0x00: OFF   0x03: BOOST
+    
+    //0x91:shutterSpeed 0x00: AUTO
+        //24  FPS: 0x03: 1/24      0x06: 1/48      0x0B: 1/96      0x10: 1/192     0x19: 1/384
+        //30  FPS: 0x05: 1/30      0x08: 1/60      0x0D: 1/120     0x12: 1/240     0x16: 1/480
+        //60  FPS: 0x08: 1/60      0x0D: 1/120     0x12: 1/240     0x16: 1/480     0x17: 1/960
+        //120 FPS: 0x0D: 1/120     0x12: 1/240     0x16: 1/480     0x17: 1/960     0x18: 1/1920
+        //240 FPS: 0x12: 1/240     0x16: 1/480     0x17: 1/960     0x18: 1/1920    0x1F: 1/3840
+    
+    //0x76:EV
+        //0x00: 2.0
+        //0x01: +1.5
+        //0x02: +1
+        //0x03: +0.5
+        //0x04: 0
+        //0x05: -0.5
+        //0x06: -1
+        //0x07: -1.5
+        //0x08: -2
+    
+    //0x73:WB
+        //0x03: 6500K
+        //0x02: 5500K
+        //0x0C: 5000K
+        //0x0B: 4500K
+        //0x00: Auto
+        //0x04: Native
+        //0x05: 4000K
+        //0x0a: 3200K
+        //0x09: 2800K
+        //0x08: 2300K
+    
+    //0x66:ISOmin
+        //0x08: 100     0x07: 200   0x02: 400   0x04: 800   0x01: 1600  0x03: 3200   0x00: 6400
+        
+    //0d:ISOmax
+        //0x08: 100     0x07: 200   0x02: 400   0x04: 800   0x01: 1600  0x03: 3200   0x00: 6400
+    
+    //0x75:Sharpness
+        //0x02: LOW     0x01: MEDIUM    0x00: HIGH
+    
+    //0x74:Color
+        //0x01: Flat    0x00: GoPro
+    
+    //0x95:Wind
+        //0x00: OFF     0x04: ON    0x02: Auto
+    
+    private static var GetAllSettingsHex : [UInt8] = [0x0d, 0x52, 0x02, 0x03, 0x79, 0x87, 0x91, 0x76, 0x73, 0x66, 0x0d, 0x75, 0x74, 0x95]
+    
+    //register notify all settings
+    //private static var GetAllSettingsHex: [UInt8] = [0x01,0x12]
+    public static var GetAllSetting = Data(GetAllSettingsHex)
+}
