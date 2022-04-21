@@ -26,8 +26,10 @@ struct AuthenticationView: View {
 
                 Link("authentication:facebook", destination: URL(string: "fb://profile/meracle.vn")!).padding()
                 
-                Button("authentication:accept") {
+                Button {
                     accept = true
+                } label: {
+                    Label("authentication:accept", systemImage: "checkmark.circle.fill")
                 }
                 .padding()
                 .background(Color.blue)
