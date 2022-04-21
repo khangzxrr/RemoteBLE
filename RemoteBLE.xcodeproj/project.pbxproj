@@ -35,6 +35,20 @@
 		04C98BA127D12F120030403F /* PeripheralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C98BA027D12F120030403F /* PeripheralModel.swift */; };
 		04CB39532806EDC600949CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CB39522806EDC600949CCC /* Assets.xcassets */; };
 		04CB5AAB27DA4B6900760843 /* ShutterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB5AAA27DA4B6900760843 /* ShutterButton.swift */; };
+		04FB387F281113CF00C749E8 /* GoProSettingCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB387E281113CF00C749E8 /* GoProSettingCommands.swift */; };
+		04FB388128115C7A00C749E8 /* GoProSettingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB388028115C7A00C749E8 /* GoProSettingParser.swift */; };
+		04FB388728116D6B00C749E8 /* Resolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB388628116D6B00C749E8 /* Resolution.swift */; };
+		04FB388928116D8300C749E8 /* Fps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB388828116D8300C749E8 /* Fps.swift */; };
+		04FB388B28116DF900C749E8 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB388A28116DF900C749E8 /* Lens.swift */; };
+		04FB388D28116E4B00C749E8 /* HyperSmooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB388C28116E4B00C749E8 /* HyperSmooth.swift */; };
+		04FB388F28116EC600C749E8 /* ShutterSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB388E28116EC600C749E8 /* ShutterSpeed.swift */; };
+		04FB389128116F5C00C749E8 /* EV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB389028116F5C00C749E8 /* EV.swift */; };
+		04FB389328116FD700C749E8 /* WhiteBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB389228116FD700C749E8 /* WhiteBalance.swift */; };
+		04FB38952811704C00C749E8 /* IsoMin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB38942811704C00C749E8 /* IsoMin.swift */; };
+		04FB38972811709A00C749E8 /* IsoMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB38962811709A00C749E8 /* IsoMax.swift */; };
+		04FB3899281170B500C749E8 /* Sharpness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB3898281170B500C749E8 /* Sharpness.swift */; };
+		04FB389B281170E200C749E8 /* GoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB389A281170E200C749E8 /* GoColor.swift */; };
+		04FB389D2811710800C749E8 /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB389C2811710800C749E8 /* Wind.swift */; };
 		04FE8BAB27CCE50F007AF859 /* PeripheralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FE8BAA27CCE50F007AF859 /* PeripheralView.swift */; };
 		275FF1440A50D5474C5EA795 /* Pods_RemoteBLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85BC8A78F2B8368A329EE3A2 /* Pods_RemoteBLE.framework */; };
 		2BA055FD6FBCFC9939D52199 /* Pods_RemoteBLE_RemoteBLEUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B42204337B96E0B9775B746 /* Pods_RemoteBLE_RemoteBLEUITests.framework */; };
@@ -90,6 +104,20 @@
 		04C98BA027D12F120030403F /* PeripheralModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralModel.swift; sourceTree = "<group>"; };
 		04CB39522806EDC600949CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04CB5AAA27DA4B6900760843 /* ShutterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterButton.swift; sourceTree = "<group>"; };
+		04FB387E281113CF00C749E8 /* GoProSettingCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProSettingCommands.swift; sourceTree = "<group>"; };
+		04FB388028115C7A00C749E8 /* GoProSettingParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProSettingParser.swift; sourceTree = "<group>"; };
+		04FB388628116D6B00C749E8 /* Resolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolution.swift; sourceTree = "<group>"; };
+		04FB388828116D8300C749E8 /* Fps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fps.swift; sourceTree = "<group>"; };
+		04FB388A28116DF900C749E8 /* Lens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
+		04FB388C28116E4B00C749E8 /* HyperSmooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperSmooth.swift; sourceTree = "<group>"; };
+		04FB388E28116EC600C749E8 /* ShutterSpeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterSpeed.swift; sourceTree = "<group>"; };
+		04FB389028116F5C00C749E8 /* EV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EV.swift; sourceTree = "<group>"; };
+		04FB389228116FD700C749E8 /* WhiteBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBalance.swift; sourceTree = "<group>"; };
+		04FB38942811704C00C749E8 /* IsoMin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsoMin.swift; sourceTree = "<group>"; };
+		04FB38962811709A00C749E8 /* IsoMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsoMax.swift; sourceTree = "<group>"; };
+		04FB3898281170B500C749E8 /* Sharpness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharpness.swift; sourceTree = "<group>"; };
+		04FB389A281170E200C749E8 /* GoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoColor.swift; sourceTree = "<group>"; };
+		04FB389C2811710800C749E8 /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
 		04FE8BAA27CCE50F007AF859 /* PeripheralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralView.swift; sourceTree = "<group>"; };
 		082D7299E5E6C17A8D1D3534 /* Pods-RemoteBLE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteBLE.release.xcconfig"; path = "Target Support Files/Pods-RemoteBLE/Pods-RemoteBLE.release.xcconfig"; sourceTree = "<group>"; };
 		0A5A79B079854D1ADAF5698C /* Pods_RemoteBLETests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemoteBLETests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,8 +161,6 @@
 		04172146280ECBE4006F237A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				04172147280ECC01006F237A /* SettingView.swift */,
-				0478B05B280FB21900FFCF56 /* SettingViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -217,6 +243,8 @@
 				04411C6927CE285900E2AC19 /* GoPro.swift */,
 				04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */,
 				04684E8D27DE21580048F1D0 /* GoProEnums.swift */,
+				04FB387E281113CF00C749E8 /* GoProSettingCommands.swift */,
+				04FB388028115C7A00C749E8 /* GoProSettingParser.swift */,
 			);
 			path = GoPro;
 			sourceTree = "<group>";
@@ -249,6 +277,7 @@
 		047FDC7C28097B790049A502 /* Peripheral */ = {
 			isa = PBXGroup;
 			children = (
+				04FB3882281160CE00C749E8 /* Settings */,
 				04C98BA027D12F120030403F /* PeripheralModel.swift */,
 				04FE8BAA27CCE50F007AF859 /* PeripheralView.swift */,
 				04172144280EBBAB006F237A /* TempDataContainer.swift */,
@@ -263,6 +292,35 @@
 				042CBF9927CBC36800D56FFB /* BLEScanningView.swift */,
 			);
 			path = BLE;
+			sourceTree = "<group>";
+		};
+		04FB3882281160CE00C749E8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				04FB388528116D5600C749E8 /* SettingParams */,
+				04172147280ECC01006F237A /* SettingView.swift */,
+				0478B05B280FB21900FFCF56 /* SettingViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		04FB388528116D5600C749E8 /* SettingParams */ = {
+			isa = PBXGroup;
+			children = (
+				04FB388628116D6B00C749E8 /* Resolution.swift */,
+				04FB388828116D8300C749E8 /* Fps.swift */,
+				04FB388A28116DF900C749E8 /* Lens.swift */,
+				04FB388C28116E4B00C749E8 /* HyperSmooth.swift */,
+				04FB388E28116EC600C749E8 /* ShutterSpeed.swift */,
+				04FB389028116F5C00C749E8 /* EV.swift */,
+				04FB389228116FD700C749E8 /* WhiteBalance.swift */,
+				04FB38942811704C00C749E8 /* IsoMin.swift */,
+				04FB38962811709A00C749E8 /* IsoMax.swift */,
+				04FB3898281170B500C749E8 /* Sharpness.swift */,
+				04FB389A281170E200C749E8 /* GoColor.swift */,
+				04FB389C2811710800C749E8 /* Wind.swift */,
+			);
+			path = SettingParams;
 			sourceTree = "<group>";
 		};
 		1F43352B581A31770F4BBCE5 /* Pods */ = {
@@ -299,7 +357,6 @@
 				042CBF9027CBC36800D56FFB /* Sources */,
 				042CBF9127CBC36800D56FFB /* Frameworks */,
 				042CBF9227CBC36800D56FFB /* Resources */,
-				CCE870E5DEDAE95EA92EEDF8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -337,7 +394,6 @@
 				042CBFAA27CBC36A00D56FFB /* Sources */,
 				042CBFAB27CBC36A00D56FFB /* Frameworks */,
 				042CBFAC27CBC36A00D56FFB /* Resources */,
-				578B28E1F176E09C0F17AC99 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -425,23 +481,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		578B28E1F176E09C0F17AC99 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RemoteBLE-RemoteBLEUITests/Pods-RemoteBLE-RemoteBLEUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RemoteBLE-RemoteBLEUITests/Pods-RemoteBLE-RemoteBLEUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RemoteBLE-RemoteBLEUITests/Pods-RemoteBLE-RemoteBLEUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		644E8A33A5A0C8D1B36B214B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,23 +547,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CCE870E5DEDAE95EA92EEDF8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RemoteBLE/Pods-RemoteBLE-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RemoteBLE/Pods-RemoteBLE-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RemoteBLE/Pods-RemoteBLE-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -533,8 +555,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				04684E8C27DE20F30048F1D0 /* GoProDataParser.swift in Sources */,
+				04FB3899281170B500C749E8 /* Sharpness.swift in Sources */,
 				0478B05C280FB21900FFCF56 /* SettingViewModel.swift in Sources */,
+				04FB388728116D6B00C749E8 /* Resolution.swift in Sources */,
 				04411C6627CE233600E2AC19 /* GoProCharacteristics.swift in Sources */,
+				04FB388128115C7A00C749E8 /* GoProSettingParser.swift in Sources */,
 				04CB5AAB27DA4B6900760843 /* ShutterButton.swift in Sources */,
 				04172148280ECC01006F237A /* SettingView.swift in Sources */,
 				04172145280EBBAB006F237A /* TempDataContainer.swift in Sources */,
@@ -542,14 +567,25 @@
 				042CBF9A27CBC36800D56FFB /* BLEScanningView.swift in Sources */,
 				047FDC762809784E0049A502 /* UserModel.xcdatamodeld in Sources */,
 				04411C6C27CE3B2800E2AC19 /* GoProCommand.swift in Sources */,
+				04FB388928116D8300C749E8 /* Fps.swift in Sources */,
+				04FB38952811704C00C749E8 /* IsoMin.swift in Sources */,
+				04FB389328116FD700C749E8 /* WhiteBalance.swift in Sources */,
+				04FB389128116F5C00C749E8 /* EV.swift in Sources */,
+				04FB389B281170E200C749E8 /* GoColor.swift in Sources */,
 				04684E9027DE28E80048F1D0 /* DataExtension.swift in Sources */,
 				04684E8E27DE21580048F1D0 /* GoProEnums.swift in Sources */,
 				042CBFC227CBC41500D56FFB /* BLEConnection.swift in Sources */,
 				04C98BA127D12F120030403F /* PeripheralModel.swift in Sources */,
+				04FB389D2811710800C749E8 /* Wind.swift in Sources */,
 				047FDC70280924440049A502 /* AuthenticationView.swift in Sources */,
+				04FB38972811709A00C749E8 /* IsoMax.swift in Sources */,
+				04FB388B28116DF900C749E8 /* Lens.swift in Sources */,
 				042CBF9827CBC36800D56FFB /* GoProBLEApp.swift in Sources */,
+				04FB388F28116EC600C749E8 /* ShutterSpeed.swift in Sources */,
 				047FDC78280978F40049A502 /* AuthenticationViewModel.swift in Sources */,
+				04FB387F281113CF00C749E8 /* GoProSettingCommands.swift in Sources */,
 				04FE8BAB27CCE50F007AF859 /* PeripheralView.swift in Sources */,
+				04FB388D28116E4B00C749E8 /* HyperSmooth.swift in Sources */,
 				04411C6A27CE285900E2AC19 /* GoPro.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -741,7 +777,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.RemoteBLE;
 				PRODUCT_NAME = RemoteBLE;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -774,7 +810,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.RemoteBLE;
 				PRODUCT_NAME = RemoteBLE;
 				SWIFT_EMIT_LOC_STRINGS = YES;

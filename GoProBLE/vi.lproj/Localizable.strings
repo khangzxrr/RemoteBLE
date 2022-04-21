@@ -15,7 +15,6 @@
 "blescanning:title" = "Quét các thiết bị";
 "blescanning:clearandrescan" = "Xoá và quét lại";
 
-
 "peripheral:totalvideos" = "Tổng số video trên thẻ: ";
 "peripheral:batterylevel" = "Dung lượng pin còn lại: ";
 "peripheral:rec" = "Ghi";
@@ -26,4 +25,17 @@
 "peripheral:setting" = "Cài đặt";
 "peripheral:puttosleep" = "Tắt gopro tạm thời";
 "peripheral:disconnected" = "Đã ngắt kết nối.. nhấn vào đây để kết nối lại";
-"peripheral:reconnecting" = "Đang kết nối lại...";
+"peripheral:reconnecting" = "Đang kết nối lại... Nếu kết nối quá lâu, xin hãy quay lại và nhấn kết nối thủ công";
+
+"setting:resolution" = "Độ phân giải";
+"setting:fps" = "FPS";
+"setting:lens" = "Độ rộng góc";
+"setting:hypersmooth" = "HyperSmooth";
+"setting:shutterspeed" = "Tốc độ màn trập";
+"setting:ev" = "Độ sáng (ev)";
+"setting:whitebalance" = "Cân bằng trắng";
+"setting:isomin" = "ISO thấp nhất";
+"setting:isomax" = "ISO cao nhất";
+"setting:sharpness" = "Độ sắc nét";
+"setting:gocolor" = "Màu sắc";
+"setting:title" = "Cài đặt";

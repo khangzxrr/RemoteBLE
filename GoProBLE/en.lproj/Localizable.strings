@@ -6,4 +6,36 @@
   
 */
 
-"authentication:introduction" = "Hello before...";
+"authentication:introduction" = "Hello, before you continue\nIf you found any bugs or error please contact me for better experiences\nI'm glad to help!";
+"authentication:facebook" = "Facebook URL: Võ Ngọc Khang";
+"authentication:accept" = "Accept and continue";
+"authentication:title" = "Small note";
+
+"blescanning:waiting" = "Pleas wait...1..2..3...";
+"blescanning:title" = "Scanning for GoPro";
+"blescanning:clearandrescan" = "Clear and Rescan";
+
+"peripheral:totalvideos" = "Total videos in card: ";
+"peripheral:batterylevel" = "Battery left: ";
+"peripheral:rec" = "Rec";
+"peripheral:stop" = "Stop";
+"peripheral:bluetootherror" = "Bluetooth error";
+"peripheral:bluetootherrordescription" = "Please make sure connect to GoPro only!";
+"peripheral:accepterror" = "I understand";
+"peripheral:setting" = "Settings";
+"peripheral:puttosleep" = "Turn off gopro temporary";
+"peripheral:disconnected" = "Disconnected.. Tap here to reconnect";
+"peripheral:reconnecting" = "Reconnecting... If it took too long, please go back and reconnect manually";
+
+"setting:resolution" = "Resolution";
+"setting:fps" = "FPS";
+"setting:lens" = "Lens";
+"setting:hypersmooth" = "HyperSmooth";
+"setting:shutterspeed" = "Shutter Speed";
+"setting:ev" = "EV";
+"setting:whitebalance" = "White Balance";
+"setting:isomin" = "ISO min";
+"setting:isomax" = "ISO max";
+"setting:sharpness" = "Sharpness";
+"setting:gocolor" = "Color";
+"setting:title" = "Setting";

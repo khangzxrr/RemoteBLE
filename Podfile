@@ -6,7 +6,7 @@ target 'RemoteBLE' do
   use_frameworks!
 
   # Pods for RemoteBLE
-  pod 'Auth0', '~> 2.0'
+ 
   target 'RemoteBLETests' do
     inherit! :search_paths
     # Pods for testing
