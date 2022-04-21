@@ -8,7 +8,6 @@
 import SwiftUI
 import CoreBluetooth
 
-import Auth0
 
 struct BLEScanningView: View {
     //StateObject is the owner of the object, other views use this shared object
