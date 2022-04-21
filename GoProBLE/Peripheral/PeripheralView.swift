@@ -14,6 +14,8 @@ struct PeripheralView: View {
     @ObservedObject var periModel : PeripheralModel
     @ObservedObject var bleConnection : BLEConnection
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var busyButtonColorChange = true
     
     var body: some View {
@@ -38,10 +40,24 @@ struct PeripheralView: View {
                
                 VStack{
                     HStack {
+                        Label(periModel.batteryDisplay, systemImage: "battery.75")
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .fill(periModel.batteryBackground)
+                                    .shadow(color: .gray, radius: 2, x: 0, y: 2)
+                            )
+                            .foregroundColor(.white)
                         Spacer()
-                        Button("peripheral:puttosleep") {
+                        Button {
                             periModel.putToSleep()
+                        } label: {
+                            Label("peripheral:puttosleep", systemImage: "sleep.circle.fill")
                         }
+                        .padding()
+                        .background(Color.orange)
+                        .foregroundColor(.white)
+                        .cornerRadius(30)
                     }.padding()
                     
                     HStack {
@@ -49,20 +65,8 @@ struct PeripheralView: View {
                     }
                     HStack {
                         Text("peripheral:totalvideos")
-                        Text(periModel.totalVideos).bold()
+                        Text(periModel.timeleft + " (" + String(periModel.totalVideos) + " videos)").bold()
                     }
-                    HStack{
-                        Text("peripheral:batterylevel")
-                        Text(periModel.batteryDisplay).bold()
-                    }
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 30)
-                            .fill(periModel.batteryBackground)
-                            .shadow(color: .gray, radius: 2, x: 0, y: 2)
-                    )
-                    .foregroundColor(.white)
-                    .transition(.slide)
                     
                     HStack(alignment: .center, spacing: 20){
                         Button(!periModel.isRecording ? "peripheral:rec" : "peripheral:stop"){
@@ -99,34 +103,42 @@ struct PeripheralView: View {
                     }
                     
                     HStack(alignment: .center, spacing: 30) {
-                        Button("Timelapse")  {
+                        Button  {
                             periModel.setMode(.Timelapse)
+                            
+                        } label: {
+                            Label("Lapse", systemImage: "timelapse")
                         }
                         .padding()
-                        .background(periModel.currentMode == .Timelapse ? Color.blue : Color.clear)
+                        .background(periModel.currentMode == .Timelapse ? Color.blue : Color.white)
                         .cornerRadius(30)
                         .foregroundColor(periModel.currentMode == .Timelapse ? Color.white : Color.black)
                         
-                        Button("Video") {
+                        Button {
                             periModel.setMode(.Video)
+                        } label: {
+                            Label("Video", systemImage: "video.fill")
                         }
                         .padding()
-                        .background(periModel.currentMode == .Video ? Color.blue : Color.clear)
+                        .background(periModel.currentMode == .Video ? Color.blue : Color.white)
                         .cornerRadius(30)
                         .foregroundColor(periModel.currentMode == .Video ? Color.white : Color.black)
                         
-                        Button("Photo") {
+                        Button {
                             periModel.setMode(.Photo)
+                        } label: {
+                            Label("Photo", systemImage: "photo")
                         }
                         .padding()
-                        .background(periModel.currentMode == .Photo ? Color.blue : Color.clear)
+                        .background(periModel.currentMode == .Photo ? Color.blue : Color.white)
                         .cornerRadius(30)
                         .foregroundColor(periModel.currentMode == .Photo ? Color.white : Color.black)
                     }
                     
                     HStack(alignment: .center, spacing: 0) {
-                        NavigationLink("peripheral:setting", destination: SettingView())
+                        NavigationLink("peripheral:setting", destination: SettingView(peripheralModel: periModel))
                             .opacity(periModel.currentMode == .Video ? 1 : 0)
+                            .disabled(periModel.currentMode != .Video)
                     }
                     .padding(30)
                     
