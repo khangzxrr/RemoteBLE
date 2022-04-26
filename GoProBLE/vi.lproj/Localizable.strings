@@ -20,10 +20,10 @@
 "peripheral:rec" = "Ghi";
 "peripheral:stop" = "Dừng";
 "peripheral:bluetootherror" = "Lỗi bluetooth";
-"peripheral:bluetootherrordescription" = "Xin hãy đảm bảo rằng bạn kết nối tới gopro thay vì thiết bị khác";
+"peripheral:bluetootherrordescription" = "Xin hãy đảm bảo rằng bạn kết nối tới đúng thiết bị";
 "peripheral:accepterror" = "Tôi đã hiểu";
 "peripheral:setting" = "Cài đặt";
-"peripheral:puttosleep" = "Tắt gopro tạm thời";
+"peripheral:puttosleep" = "Tắt tạm thời";
 "peripheral:disconnected" = "Đã ngắt kết nối.. nhấn vào đây để kết nối lại";
 "peripheral:reconnecting" = "Đang kết nối lại... Nếu kết nối quá lâu, xin hãy quay lại và nhấn kết nối thủ công";
 

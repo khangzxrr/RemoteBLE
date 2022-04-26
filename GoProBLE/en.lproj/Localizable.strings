@@ -12,7 +12,7 @@
 "authentication:title" = "Small note";
 
 "blescanning:waiting" = "Pleas wait...1..2..3...";
-"blescanning:title" = "Scanning for GoPro";
+"blescanning:title" = "Scanning for devices";
 "blescanning:clearandrescan" = "Clear and Rescan";
 
 "peripheral:totalvideos" = "Total videos in card: ";
@@ -23,7 +23,7 @@
 "peripheral:bluetootherrordescription" = "Please make sure connect to GoPro only!";
 "peripheral:accepterror" = "I understand";
 "peripheral:setting" = "Settings";
-"peripheral:puttosleep" = "Turn off gopro temporary";
+"peripheral:puttosleep" = "Turn off temporary";
 "peripheral:disconnected" = "Disconnected.. Tap here to reconnect";
 "peripheral:reconnecting" = "Reconnecting... If it took too long, please go back and reconnect manually";
 

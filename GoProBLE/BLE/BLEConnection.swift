@@ -64,6 +64,10 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
             break
         case .poweredOn:
             print("Central scanning")
+            
+            //fail to pairing because we should use first peripheral or updated version of it?
+            //dont know
+            //debug it tomorrow
             centralManager.scanForPeripherals(withServices: nil)
             break
         default:
@@ -144,7 +148,7 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         //print("Peripheral Name: \(String(describing: peripheral.name))  RSSI: \(String(RSSI.doubleValue))")
         
-        if peripheral.name != nil && !isScannedListContainPeripheralByName(peripheral: peripheral) && peripheral.name!.lowercased().contains("gopro")
+        if peripheral.name != nil
             
         {
             self.scannedBLEDevices.append(peripheral)

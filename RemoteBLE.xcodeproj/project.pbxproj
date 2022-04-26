@@ -22,18 +22,15 @@
 		04411C6A27CE285900E2AC19 /* GoPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411C6927CE285900E2AC19 /* GoPro.swift */; };
 		04411C6C27CE3B2800E2AC19 /* GoProCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411C6B27CE3B2800E2AC19 /* GoProCommand.swift */; };
 		04542213280AF8E3003B5ABB /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 04542212280AF8E3003B5ABB /* Readme.md */; };
+		045EA32028147E500009CC8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045EA31F28147E500009CC8C /* Assets.xcassets */; };
 		04684E8C27DE20F30048F1D0 /* GoProDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */; };
 		04684E8E27DE21580048F1D0 /* GoProEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8D27DE21580048F1D0 /* GoProEnums.swift */; };
 		04684E9027DE28E80048F1D0 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8F27DE28E80048F1D0 /* DataExtension.swift */; };
 		0478B05C280FB21900FFCF56 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478B05B280FB21900FFCF56 /* SettingViewModel.swift */; };
 		047FDC70280924440049A502 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC6F280924440049A502 /* AuthenticationView.swift */; };
-		047FDC71280926410049A502 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047FDC6E280923AA0049A502 /* Auth0.plist */; };
-		047FDC72280926420049A502 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047FDC6E280923AA0049A502 /* Auth0.plist */; };
-		047FDC73280926450049A502 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 047FDC6E280923AA0049A502 /* Auth0.plist */; };
 		047FDC762809784E0049A502 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC742809784E0049A502 /* UserModel.xcdatamodeld */; };
 		047FDC78280978F40049A502 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC77280978F40049A502 /* AuthenticationViewModel.swift */; };
 		04C98BA127D12F120030403F /* PeripheralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C98BA027D12F120030403F /* PeripheralModel.swift */; };
-		04CB39532806EDC600949CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04CB39522806EDC600949CCC /* Assets.xcassets */; };
 		04CB5AAB27DA4B6900760843 /* ShutterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB5AAA27DA4B6900760843 /* ShutterButton.swift */; };
 		04FB387F281113CF00C749E8 /* GoProSettingCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB387E281113CF00C749E8 /* GoProSettingCommands.swift */; };
 		04FB388128115C7A00C749E8 /* GoProSettingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB388028115C7A00C749E8 /* GoProSettingParser.swift */; };
@@ -93,16 +90,15 @@
 		04411C6927CE285900E2AC19 /* GoPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoPro.swift; sourceTree = "<group>"; };
 		04411C6B27CE3B2800E2AC19 /* GoProCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProCommand.swift; sourceTree = "<group>"; };
 		04542212280AF8E3003B5ABB /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		045EA31F28147E500009CC8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProDataParser.swift; sourceTree = "<group>"; };
 		04684E8D27DE21580048F1D0 /* GoProEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProEnums.swift; sourceTree = "<group>"; };
 		04684E8F27DE28E80048F1D0 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		0478B05B280FB21900FFCF56 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		047FDC6E280923AA0049A502 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		047FDC6F280924440049A502 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		047FDC752809784E0049A502 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
 		047FDC77280978F40049A502 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		04C98BA027D12F120030403F /* PeripheralModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralModel.swift; sourceTree = "<group>"; };
-		04CB39522806EDC600949CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04CB5AAA27DA4B6900760843 /* ShutterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterButton.swift; sourceTree = "<group>"; };
 		04FB387E281113CF00C749E8 /* GoProSettingCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProSettingCommands.swift; sourceTree = "<group>"; };
 		04FB388028115C7A00C749E8 /* GoProSettingParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProSettingParser.swift; sourceTree = "<group>"; };
@@ -169,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				04542212280AF8E3003B5ABB /* Readme.md */,
-				047FDC6E280923AA0049A502 /* Auth0.plist */,
 				043017ED2809215C0034381B /* RemoteBLE-Info.plist */,
 				042CBF9627CBC36800D56FFB /* GoProBLE */,
 				042CBFA727CBC36A00D56FFB /* GoProBLETests */,
@@ -201,7 +196,7 @@
 				047FDC7928097B210049A502 /* Authentication */,
 				04411C6D27CE3C1700E2AC19 /* GoPro */,
 				042CBF9727CBC36800D56FFB /* GoProBLEApp.swift */,
-				04CB39522806EDC600949CCC /* Assets.xcassets */,
+				045EA31F28147E500009CC8C /* Assets.xcassets */,
 				047FDC742809784E0049A502 /* UserModel.xcdatamodeld */,
 				042CBF9D27CBC36900D56FFB /* Preview Content */,
 				0426808B2809F39A00C8AD37 /* Localizable.strings */,
@@ -455,10 +450,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04542213280AF8E3003B5ABB /* Readme.md in Resources */,
-				04CB39532806EDC600949CCC /* Assets.xcassets in Resources */,
 				042680892809F39A00C8AD37 /* Localizable.strings in Resources */,
-				047FDC71280926410049A502 /* Auth0.plist in Resources */,
 				042CBF9F27CBC36900D56FFB /* Preview Assets.xcassets in Resources */,
+				045EA32028147E500009CC8C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +460,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				047FDC72280926420049A502 /* Auth0.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +467,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				047FDC73280926450049A502 /* Auth0.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,7 +759,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "RemoteBLE-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "use bluetooth to discover gopro";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "use bluetooth to discover devices";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -777,7 +769,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.RemoteBLE;
 				PRODUCT_NAME = RemoteBLE;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -800,7 +792,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "RemoteBLE-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "use bluetooth to discover gopro";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "use bluetooth to discover devices";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -810,7 +802,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.RemoteBLE;
 				PRODUCT_NAME = RemoteBLE;
 				SWIFT_EMIT_LOC_STRINGS = YES;
