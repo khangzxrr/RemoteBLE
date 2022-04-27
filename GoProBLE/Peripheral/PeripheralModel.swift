@@ -34,18 +34,22 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     @Published var successDiscoveredCharacteristic = false
     
     //================ Setting =======================
-    @Published var selectedResolution : String = Resolution.resValue.first!
-    @Published var selectedFps = Fps.fpsValue.first!
-    @Published var selectedLens = Lens.lensValue.first!
-    @Published var selectedHypersmooth = Hypersmooth.hypersmoothValue.first!
-    @Published var selectedShutterSpeed = ShutterSpeed.shutterspeedValue.first!
-    @Published var selectedEV = EV.evValue.first!
-    @Published var selectedWhiteBalance = WhiteBalance.wbValue.first!
-    @Published var selectedIsoMin = IsoMin.isoValue.first!
-    @Published var selectedIsoMax = IsoMax.isoValue.first!
-    @Published var selectedSharpness = Sharpness.sharpnessValue.first!
-    @Published var selectedGoColor = GoColor.gocolorValue.first!
-    @Published var selectedWind = Wind.windValue.first!
+    @Published var selectedResolution : String = Resolution.resolutions.displayValues.first!
+    @Published var selectedFps = Fps.fps.displayValues.first!
+    
+    @Published var selectedLens = Lens.lens.displayValues.first!
+    //4k - 30 fps gopro 9, if we set superview but 60 fps => it will fallback to wise
+    
+    @Published var selectedHypersmooth = Hypersmooth.hypersmooths.displayValues.first!
+    @Published var selectedShutterSpeed = ShutterSpeed.shutters.displayValues.first!
+    @Published var selectedEV = EV.ev.displayValues.first!
+    @Published var selectedWhiteBalance = WhiteBalance.whitebalance.displayValues.first!
+    @Published var selectedIsoMin = IsoMin.isomin.displayValues.first!
+    @Published var selectedIsoMax = IsoMax.isomax.displayValues.first!
+    @Published var selectedSharpness = Sharpness.sharpness.displayValues.first!
+    @Published var selectedGoColor = GoColor.gocolor.displayValues.first!
+    @Published var selectedWind = Wind.wind.displayValues.first!
+    
     
     private var tempData : TempDataContainer! = nil
     
@@ -134,7 +138,7 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         peripheral.writeValue(GoProCommand.GetAllStatus, for: goPro.StatusCharacteristic, type: .withResponse) //Get all status
         peripheral.writeValue(GoProCommand.CurrentDateData(), for: goPro.CommandCharacteristic, type: .withResponse) //set current date
         
-        sendingToStatusCharacter(SettingCommands.GetAllSetting)
+        self.sendingToStatusCharacter(SettingCommands.GetAllSetting)
     }
     
     //for safety purpose
@@ -159,9 +163,7 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     
     public func sendingToSettingCharacter(_ data: Data) {
         peripheral.writeValue(data, for: goPro.SettingCharacteristic, type: .withResponse)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.sendingToStatusCharacter(SettingCommands.GetAllSetting)
-        }
+        
         
     }
     public func sendingToStatusCharacter(_ data: Data) {
@@ -213,78 +215,85 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         switch statusBytesArray[0] {
         case Resolution.ID:
             print("Resolution ")
-            selectedResolution = GoProDataParser.ParseResolution(&statusBytesArray)
+            selectedResolution = GoProDataParser.ParseSetting(&statusBytesArray, setting: Resolution.self)!
             
             break
             
         case Fps.ID:
             print("Fps: ")
-            selectedFps = GoProDataParser.ParseFps(&statusBytesArray)
+            selectedFps = GoProDataParser.ParseSetting(&statusBytesArray, setting: Fps.self)!
             
             break
             
         case Lens.ID:
             print("Lens:")
-            selectedLens = GoProDataParser.ParseLens(&statusBytesArray)
+            selectedLens = GoProDataParser.ParseSetting(&statusBytesArray, setting: Lens.self)!
             
             break
             
         case Hypersmooth.ID:
             print("Hypersmooth:")
-            selectedHypersmooth = GoProDataParser.ParseHypersmooth(&statusBytesArray)
+            selectedHypersmooth = GoProDataParser.ParseSetting(&statusBytesArray, setting: Hypersmooth.self)!
             
             break
             
         case ShutterSpeed.ID:
             print("ShutterSpeed:")
-            selectedShutterSpeed = GoProDataParser.ParseShutterSpeed(&statusBytesArray)
+            selectedShutterSpeed = GoProDataParser.ParseSetting(&statusBytesArray, setting: ShutterSpeed.self)!
             
             break
             
         case EV.ID:
             print("EV:")
-            selectedEV = GoProDataParser.ParseEV(&statusBytesArray)
-            
+            selectedEV = GoProDataParser.ParseSetting(&statusBytesArray, setting: EV.self)!
             break
             
         case WhiteBalance.ID:
             print("Whitebalance:")
-            selectedWhiteBalance = GoProDataParser.ParseWhiteBalance(&statusBytesArray)
+            selectedWhiteBalance = GoProDataParser.ParseSetting(&statusBytesArray, setting: WhiteBalance.self)!
             
             break
             
         case IsoMin.ID:
             print("ISO min: ")
-            selectedIsoMin = GoProDataParser.ParseISO(&statusBytesArray)
+            selectedIsoMin = GoProDataParser.ParseSetting(&statusBytesArray, setting: IsoMin.self)!
             
             break
             
         case IsoMax.ID:
             print("ISO max: ")
-            selectedIsoMax = GoProDataParser.ParseISO(&statusBytesArray)
-            
+            selectedIsoMax = GoProDataParser.ParseSetting(&statusBytesArray, setting: IsoMax.self)!
             break
             
         case Sharpness.ID:
             print("Sharpness: ")
-            selectedSharpness = GoProDataParser.ParseSharpness(&statusBytesArray)
-            
+            selectedSharpness = GoProDataParser.ParseSetting(&statusBytesArray, setting: Sharpness.self)!
             break
             
         case GoColor.ID:
             print("Color: ")
-            selectedGoColor = GoProDataParser.ParseColor(&statusBytesArray)
-            
+            selectedGoColor = GoProDataParser.ParseSetting(&statusBytesArray, setting: GoColor.self)!
             break
             
         case Wind.ID:
             print("Wind: ")
-            selectedWind = GoProDataParser.ParseWind(&statusBytesArray)
-            
+            selectedWind = GoProDataParser.ParseSetting(&statusBytesArray, setting: Wind.self)!
             break
             
         default:
             break
+        }
+    }
+    
+    //trigger to update setting
+    public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+        if characteristic == goPro.SettingCharacteristic {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                print("written to setting characteristic")
+                self.sendingToStatusCharacter(SettingCommands.GetAllSetting)
+            }
+            
+            
         }
     }
     
@@ -356,6 +365,7 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         print("bytes: ", statusBytesOriginal.hexEncodedString())
         
         
+        
         while statusBytesArray.count != 0 {
             parsingCameraFunctionState(&statusBytesArray)
             
@@ -364,6 +374,8 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
             }
             
         }
+        
+        
         
         
     }
