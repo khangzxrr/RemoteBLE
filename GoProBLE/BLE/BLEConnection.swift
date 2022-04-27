@@ -134,14 +134,10 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
         currentPeripheral = peripheral
     }
     
-    private func isScannedListContainPeripheralByName(peripheral: CBPeripheral) -> Bool {
-        for peri in scannedBLEDevices {
-            if peri.name!.elementsEqual(peripheral.name!) {
-                return true
-            }
-        }
-        
-        return false
+    private func removedOldPeri(peripheral: CBPeripheral) {
+        scannedBLEDevices.removeAll(where: { peri in
+            return peri.name!.elementsEqual(peripheral.name!)
+        })
     }
     
     // Handles the result of the scan
@@ -149,8 +145,9 @@ open class BLEConnection: NSObject, CBCentralManagerDelegate, ObservableObject {
         //print("Peripheral Name: \(String(describing: peripheral.name))  RSSI: \(String(RSSI.doubleValue))")
         
         if peripheral.name != nil
-            
         {
+            removedOldPeri(peripheral: peripheral)
+            
             self.scannedBLEDevices.append(peripheral)
         }
         
