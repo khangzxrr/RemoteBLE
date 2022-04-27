@@ -6,24 +6,22 @@
 //
 
 import Foundation
-class Wind {
-    public static let ID : UInt8 = 0x95
-    public static let wind : [UInt8 : String] = [
-        0x00: "Off",
-        0x04: "On",
-        0x02: "Auto"
-    ]
+class Wind : Setting{
     
-    public static let windToCode : [String : UInt8] = [
+    
+    public static let ID : UInt8 = 0x95
+    public static let wind = BiDictionary(array: [
         "Off" : 0x00,
         "On" : 0x04,
         "Auto" : 0x02
-    ]
+    ])
     
-    public static let windValue = windToCode.keys.sorted()
+    static func parse(code: UInt8) -> String {
+        return wind.backward[code]!
+    }
     
-    public static func GenerateSettingCommand(selected : String) -> Data{
-        let hexValue : [UInt8] = [0x03, ID, 0x01, windToCode[selected]!]
+    public static func GenerateSettingCommand(_ selected : String) -> Data{
+        let hexValue : [UInt8] = [0x03, ID, 0x01, wind.forward[selected]!]
         
         return Data(hexValue)
     }

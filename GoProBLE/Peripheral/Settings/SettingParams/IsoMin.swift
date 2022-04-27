@@ -7,20 +7,12 @@
 
 import Foundation
 
-class IsoMin {
+class IsoMin : Setting{
+    
+    
     public static let ID : UInt8 = 0x66
     
-    public static let isomin : [UInt8: String] = [
-        0x08: "100",
-        0x07: "200",
-        0x02: "400",
-        0x04: "800",
-        0x01: "1600",
-        0x03: "3200",
-        0x00: "6400"
-    ]
-    
-    public static let isoToCode : [String : UInt8] = [
+    public static let isomin = BiDictionary(array: [
         "100" : 0x08,
         "200" : 0x07,
         "400" : 0x02,
@@ -28,12 +20,13 @@ class IsoMin {
         "1600" :0x01,
         "3200" : 0x03,
         "6400" : 0x00
-    ]
+    ])
     
-    public static let isoValue = isoToCode.keys.sorted()
-    
-    public static func GenerateSettingCommand(selected : String) -> Data{
-        let hexValue : [UInt8] = [0x03, ID, 0x01, isoToCode[selected]!]
+    static func parse(code: UInt8) -> String {
+        return isomin.backward[code]!
+    }
+    public static func GenerateSettingCommand(_ selected : String) -> Data{
+        let hexValue : [UInt8] = [0x03, ID, 0x01, isomin.forward[selected]!]
         
         return Data(hexValue)
     }

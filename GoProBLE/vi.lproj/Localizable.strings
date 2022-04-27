@@ -6,7 +6,7 @@
   
 */
 
-"authentication:introduction" = "Xin chào, trước khi bạn bắt đầu\nnếu gặp bất cứ lỗi gì xin hãy liên hệ với mình theo link bên dưới\nMình xin cám ơn và rất hân hạnh được hỗ trợ các bạn";
+"authentication:introduction" = "This product and/or service is not affiliated with, endorsed by or in any way associated with GoPro Inc. or its products and services. GoPro, HERO, and their respective logos are trademarks or registered trademarks of GoPro, Inc.";
 "authentication:facebook" = "Link facebook: Võ Ngọc Khang";
 "authentication:accept" = "Đồng ý và tiếp tục";
 "authentication:title" = "Lưu ý nhỏ";
@@ -15,7 +15,7 @@
 "blescanning:title" = "Quét các thiết bị";
 "blescanning:clearandrescan" = "Xoá và quét lại";
 
-"peripheral:totalvideos" = "Tổng số video trên thẻ: ";
+"peripheral:totalvideos" = "Có thể quay được: ";
 "peripheral:batterylevel" = "Dung lượng pin còn lại: ";
 "peripheral:rec" = "Ghi";
 "peripheral:stop" = "Dừng";
@@ -39,3 +39,4 @@
 "setting:sharpness" = "Độ sắc nét";
 "setting:gocolor" = "Màu sắc";
 "setting:title" = "Cài đặt";
+"setting:warning" = "Khi cài đặt không phù hợp với thiết bị của bạn, nó sẽ quay lại setting ban đầu";

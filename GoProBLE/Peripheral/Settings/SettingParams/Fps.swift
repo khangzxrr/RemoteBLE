@@ -7,29 +7,25 @@
 
 import Foundation
 
-class Fps {
+class Fps : Setting{
+    
+    
     public static let ID : UInt8 = 0x03
     
-    public static let fpsToCode : [String: UInt8] = [
+    public static let fps = BiDictionary(array: [
         "24" : 0x0A,
         "30" : 0x08,
         "60" : 0x05,
         "120" : 0x01,
         "240" : 0x00
-    ]
+    ])
     
-    public static let fps: [UInt8: String] = [
-        0x0A: "24",
-        0x08: "30",
-        0x05: "60",
-        0x01: "120",
-        0x00: "240"
-    ]
+    static func parse(code: UInt8) -> String {
+        return fps.backward[code]!
+    }
     
-    public static let fpsValue = fpsToCode.keys.sorted()
-    
-    public static func GenerateSettingCommand(selected : String) -> Data{
-        let hexValue : [UInt8] = [0x03, ID, 0x01, fpsToCode[selected]!]
+    public static func GenerateSettingCommand(_ selected : String) -> Data{
+        let hexValue : [UInt8] = [0x03, ID, 0x01, fps.forward[selected]!]
         
         return Data(hexValue)
     }

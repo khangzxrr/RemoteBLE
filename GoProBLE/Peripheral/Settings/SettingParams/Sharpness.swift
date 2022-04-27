@@ -6,24 +6,23 @@
 //
 
 import Foundation
-class Sharpness {
+class Sharpness : Setting {
+    
+    
     public static let ID : UInt8 = 0x75
     
-    public static let sharpness : [UInt8 : String] = [
-        0x02: "Low",
-        0x01: "Medium",
-        0x00: "High"
-    ]
-    public static let sharpnessToCode : [String : UInt8] = [
+    public static let sharpness = BiDictionary(array: [
         "Low" : 0x02,
         "Medium" : 0x01,
         "High": 0x00
-    ]
+    ])
     
-    public static let sharpnessValue = sharpnessToCode.keys.sorted()
+    static func parse(code: UInt8) -> String {
+        return sharpness.backward[code]!
+    }
     
-    public static func GenerateSettingCommand(selected : String) -> Data{
-        let hexValue : [UInt8] = [0x03, ID, 0x01, sharpnessToCode[selected]!]
+    public static func GenerateSettingCommand(_ selected : String) -> Data{
+        let hexValue : [UInt8] = [0x03, ID, 0x01, sharpness.forward[selected]!]
         
         return Data(hexValue)
     }

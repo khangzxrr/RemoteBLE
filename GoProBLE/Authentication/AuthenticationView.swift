@@ -41,7 +41,15 @@ struct AuthenticationView: View {
             }
             .navigationTitle("authentication:title")
             .navigationBarTitleDisplayMode(.large)
-           
+            .onAppear() {
+                let defaults = UserDefaults.standard
+                if defaults.object(forKey: "FirstTime") == nil {
+                    defaults.set("No", forKey: "FirstTime")
+                    return
+                } else {
+                    accept = true
+                }
+            }
            
         }
         

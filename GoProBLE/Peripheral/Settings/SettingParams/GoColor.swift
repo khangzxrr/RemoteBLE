@@ -7,23 +7,22 @@
 
 import Foundation
 
-class GoColor {
+class GoColor : Setting {
+    
+    
     public static let ID : UInt8 = 0x74
     
-    public static let gocolor : [UInt8 : String] = [
-        0x01: "Flat",
-        0x00: "GoPro"
-    ]
-    
-    public static let gocolorToCode : [String : UInt8] = [
+    public static let gocolor = BiDictionary(array: [
         "Flat" : 0x01,
         "GoPro" : 0x00
-    ]
+    ])
     
-    public static let gocolorValue = gocolorToCode.keys.sorted()
+    static func parse(code: UInt8) -> String {
+        return gocolor.backward[code]!
+    }
     
-    public static func GenerateSettingCommand(selected : String) -> Data{
-        let hexValue : [UInt8] = [0x03, ID, 0x01, gocolorToCode[selected]!]
+    public static func GenerateSettingCommand(_ selected : String) -> Data{
+        let hexValue : [UInt8] = [0x03, ID, 0x01, gocolor.forward[selected]!]
         
         return Data(hexValue)
     }

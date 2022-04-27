@@ -32,6 +32,9 @@
 		047FDC78280978F40049A502 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC77280978F40049A502 /* AuthenticationViewModel.swift */; };
 		04C98BA127D12F120030403F /* PeripheralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C98BA027D12F120030403F /* PeripheralModel.swift */; };
 		04CB5AAB27DA4B6900760843 /* ShutterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CB5AAA27DA4B6900760843 /* ShutterButton.swift */; };
+		04E93B9428187B38009262F6 /* BiDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E93B9328187B38009262F6 /* BiDirection.swift */; };
+		04E93B962818825E009262F6 /* ISetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E93B952818825E009262F6 /* ISetting.swift */; };
+		04E93B9828188BEE009262F6 /* AllSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E93B9728188BEE009262F6 /* AllSettings.swift */; };
 		04FB387F281113CF00C749E8 /* GoProSettingCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB387E281113CF00C749E8 /* GoProSettingCommands.swift */; };
 		04FB388128115C7A00C749E8 /* GoProSettingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB388028115C7A00C749E8 /* GoProSettingParser.swift */; };
 		04FB388728116D6B00C749E8 /* Resolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB388628116D6B00C749E8 /* Resolution.swift */; };
@@ -100,6 +103,9 @@
 		047FDC77280978F40049A502 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		04C98BA027D12F120030403F /* PeripheralModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralModel.swift; sourceTree = "<group>"; };
 		04CB5AAA27DA4B6900760843 /* ShutterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterButton.swift; sourceTree = "<group>"; };
+		04E93B9328187B38009262F6 /* BiDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiDirection.swift; sourceTree = "<group>"; };
+		04E93B952818825E009262F6 /* ISetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISetting.swift; sourceTree = "<group>"; };
+		04E93B9728188BEE009262F6 /* AllSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSettings.swift; sourceTree = "<group>"; };
 		04FB387E281113CF00C749E8 /* GoProSettingCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProSettingCommands.swift; sourceTree = "<group>"; };
 		04FB388028115C7A00C749E8 /* GoProSettingParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProSettingParser.swift; sourceTree = "<group>"; };
 		04FB388628116D6B00C749E8 /* Resolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolution.swift; sourceTree = "<group>"; };
@@ -154,13 +160,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04172146280ECBE4006F237A /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		042CBF8B27CBC36800D56FFB = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				047FDC7D28097BA00049A502 /* BLE */,
-				04172146280ECBE4006F237A /* Settings */,
 				047FDC7C28097B790049A502 /* Peripheral */,
 				047FDC7B28097B600049A502 /* Utils */,
 				047FDC7A28097B3A0049A502 /* CustomDesigns */,
@@ -265,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				04684E8F27DE28E80048F1D0 /* DataExtension.swift */,
+				04E93B9328187B38009262F6 /* BiDirection.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -294,6 +293,7 @@
 			children = (
 				04FB388528116D5600C749E8 /* SettingParams */,
 				04172147280ECC01006F237A /* SettingView.swift */,
+				04E93B952818825E009262F6 /* ISetting.swift */,
 				0478B05B280FB21900FFCF56 /* SettingViewModel.swift */,
 			);
 			path = Settings;
@@ -314,6 +314,7 @@
 				04FB3898281170B500C749E8 /* Sharpness.swift */,
 				04FB389A281170E200C749E8 /* GoColor.swift */,
 				04FB389C2811710800C749E8 /* Wind.swift */,
+				04E93B9728188BEE009262F6 /* AllSettings.swift */,
 			);
 			path = SettingParams;
 			sourceTree = "<group>";
@@ -548,6 +549,7 @@
 			files = (
 				04684E8C27DE20F30048F1D0 /* GoProDataParser.swift in Sources */,
 				04FB3899281170B500C749E8 /* Sharpness.swift in Sources */,
+				04E93B962818825E009262F6 /* ISetting.swift in Sources */,
 				0478B05C280FB21900FFCF56 /* SettingViewModel.swift in Sources */,
 				04FB388728116D6B00C749E8 /* Resolution.swift in Sources */,
 				04411C6627CE233600E2AC19 /* GoProCharacteristics.swift in Sources */,
@@ -560,6 +562,7 @@
 				047FDC762809784E0049A502 /* UserModel.xcdatamodeld in Sources */,
 				04411C6C27CE3B2800E2AC19 /* GoProCommand.swift in Sources */,
 				04FB388928116D8300C749E8 /* Fps.swift in Sources */,
+				04E93B9428187B38009262F6 /* BiDirection.swift in Sources */,
 				04FB38952811704C00C749E8 /* IsoMin.swift in Sources */,
 				04FB389328116FD700C749E8 /* WhiteBalance.swift in Sources */,
 				04FB389128116F5C00C749E8 /* EV.swift in Sources */,
@@ -574,6 +577,7 @@
 				04FB388B28116DF900C749E8 /* Lens.swift in Sources */,
 				042CBF9827CBC36800D56FFB /* GoProBLEApp.swift in Sources */,
 				04FB388F28116EC600C749E8 /* ShutterSpeed.swift in Sources */,
+				04E93B9828188BEE009262F6 /* AllSettings.swift in Sources */,
 				047FDC78280978F40049A502 /* AuthenticationViewModel.swift in Sources */,
 				04FB387F281113CF00C749E8 /* GoProSettingCommands.swift in Sources */,
 				04FE8BAB27CCE50F007AF859 /* PeripheralView.swift in Sources */,
@@ -751,6 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoProBLE/Preview Content\"";
@@ -758,6 +763,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "RemoteBLE-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = QuickControl;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "use bluetooth to discover devices";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -770,8 +776,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.RemoteBLE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.remoteControl;
 				PRODUCT_NAME = RemoteBLE;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -784,6 +791,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoProBLE/Preview Content\"";
@@ -791,6 +799,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "RemoteBLE-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = QuickControl;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "use bluetooth to discover devices";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -803,8 +812,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.RemoteBLE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.remoteControl;
 				PRODUCT_NAME = RemoteBLE;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
