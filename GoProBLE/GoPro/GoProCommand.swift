@@ -61,7 +61,7 @@ class GoProCommand {
     //0x08 = is camera buysy
     //0x60 = current mode
     //0x23 = total mins left
-    private static var GetAllStatusHex : [UInt8] = [0x07, 0x53, 0x46, 0x21, 0x27, 0x08, 0x60, 0x23 ]
+    private static var GetAllStatusHex : [UInt8] = [0x06, 0x53, 0x46, 0x27, 0x08, 0x60, 0x23 ]
     public static var GetAllStatus = Data(GetAllStatusHex)
     
     

@@ -40,3 +40,4 @@
 "setting:gocolor" = "Màu sắc";
 "setting:title" = "Cài đặt";
 "setting:warning" = "Khi cài đặt không phù hợp với thiết bị của bạn, nó sẽ quay lại setting ban đầu";
+"setting:gps" = "GPS";

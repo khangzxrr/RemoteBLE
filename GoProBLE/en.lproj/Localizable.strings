@@ -40,3 +40,4 @@
 "setting:gocolor" = "Color";
 "setting:title" = "Setting";
 "setting:warning" = "When setting is not available for your device, it will fallback";
+"setting:gps" = "GPS";

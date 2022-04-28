@@ -8,124 +8,139 @@
 import SwiftUI
 
 struct SettingView: View {
-    @ObservedObject var peripheralModel : PeripheralModel
-    
-    @StateObject var settingModel = SettingViewModel()
-    
+    @ObservedObject var settingModel : SettingViewModel
     
     var body: some View {
         VStack {
             Text("setting:warning")
             List {
-                Picker("setting:resolution", selection: $peripheralModel.selectedResolution) {
+                
+                Picker("setting:resolution", selection: $settingModel.selectedResolution) {
                     ForEach(Resolution.resolutions.displayValues, id: \.self) { reso in
                         Text(reso)
                     }
                 }
                 .padding()
                 .pickerStyle(SegmentedPickerStyle())
-                .onChange(of: peripheralModel.selectedResolution) { selectedRes in
+                .onChange(of: settingModel.selectedResolution) { selectedRes in
                     
-                    peripheralModel.sendingToSettingCharacter(Resolution.GenerateSettingCommand( peripheralModel.selectedResolution))
+                    settingModel.sendingToSettingCharacter(Resolution.GenerateSettingCommand( settingModel.selectedResolution))
                 }
-            
                 
-                Picker("setting:fps", selection: $peripheralModel.selectedFps) {
+                Picker("setting:fps", selection: $settingModel.selectedFps) {
                     ForEach(Fps.fps.displayValues, id: \.self) {
                         Text($0)
                     }
-                }.onChange(of: peripheralModel.selectedFps) { selecFps in
+                }.onChange(of: settingModel.selectedFps) { selecFps in
                     print("sending fps")
-                    peripheralModel.sendingToSettingCharacter(Fps.GenerateSettingCommand(peripheralModel.selectedFps))
+                    settingModel.sendingToSettingCharacter(Fps.GenerateSettingCommand(settingModel.selectedFps))
                 }
                 
-                Picker("setting:lens", selection: $peripheralModel.selectedLens) {
+                Picker("setting:lens", selection: $settingModel.selectedLens) {
                     ForEach(Lens.lens.displayValues, id: \.self) {
                         Text($0)
                     }
-                }.onChange(of: peripheralModel.selectedLens) { selectedLen in
-                    peripheralModel.sendingToSettingCharacter(Lens.GenerateSettingCommand(selectedLen))
+                }.onChange(of: settingModel.selectedLens) { selectedLen in
+                    settingModel.sendingToSettingCharacter(Lens.GenerateSettingCommand(selectedLen))
                 }
                 
-                Picker("setting:hypersmooth", selection: $peripheralModel.selectedHypersmooth) {
+                Picker("setting:hypersmooth", selection: $settingModel.selectedHypersmooth) {
                     ForEach(Hypersmooth.hypersmooths.displayValues, id: \.self) {
                         Text($0)
                     }
-                }.onChange(of: peripheralModel.selectedHypersmooth) { selectedHyper in
-                    peripheralModel.sendingToSettingCharacter(Hypersmooth.GenerateSettingCommand( selectedHyper))
+                }.onChange(of: settingModel.selectedHypersmooth) { selectedHyper in
+                    settingModel.sendingToSettingCharacter(Hypersmooth.GenerateSettingCommand( selectedHyper))
                 }
                 
                 Group {
             
-                    Picker("setting:shutterspeed", selection: $peripheralModel.selectedShutterSpeed) {
-                        ForEach(ShutterSpeed.shutters.displayValues, id: \.self) {
+                    //Add filter function to get correct shutter stops
+                    Picker("setting:shutterspeed", selection: $settingModel.selectedShutterSpeed) {
+                        ForEach(ShutterSpeed.shutters.displayValues.filter {
+                                    if $0 == "Auto" {
+                                        return true
+                                    }
+                            
+                                    let splittedShutter = $0.split(separator: "/")
+                            
+                                    return (Int(splittedShutter[1])! % Int(settingModel.selectedFps)! == 0) &&
+                                            (Int(splittedShutter[1])! / Int(settingModel.selectedFps)! <= 16)
+                                },
+                                id: \.self) {
                             Text($0)
                         }
-                    }.onChange(of: peripheralModel.selectedShutterSpeed) { selected in
-                        peripheralModel.sendingToSettingCharacter(ShutterSpeed.GenerateSettingCommand( selected))
+                    }.onChange(of: settingModel.selectedShutterSpeed) { selected in
+                        settingModel.sendingToSettingCharacter(ShutterSpeed.GenerateSettingCommand( selected))
                     }
                     
-                    
-                    Picker("setting:ev", selection: $peripheralModel.selectedEV) {
+                    //
+                    Picker("setting:ev", selection: $settingModel.selectedEV) {
                         ForEach(EV.ev.displayValues, id: \.self) {
                             Text($0)
                         }
-                    }.onChange(of: peripheralModel.selectedEV) { selected in
-                        peripheralModel.sendingToSettingCharacter(EV.GenerateSettingCommand(selected))
-                    }
+                    }.onChange(of: settingModel.selectedEV) { selected in
+                        settingModel.sendingToSettingCharacter(EV.GenerateSettingCommand(selected))
+                    }.disabled(settingModel.selectedShutterSpeed != "Auto")
                     
-                    Picker("setting:whitebalance", selection: $peripheralModel.selectedWhiteBalance) {
+                    Picker("setting:whitebalance", selection: $settingModel.selectedWhiteBalance) {
                         ForEach(WhiteBalance.whitebalance.displayValues, id: \.self) {
                             Text($0)
                         }
-                    }.onChange(of: peripheralModel.selectedWhiteBalance) { selected in
-                        peripheralModel.sendingToSettingCharacter(WhiteBalance.GenerateSettingCommand(selected))
+                    }.onChange(of: settingModel.selectedWhiteBalance) { selected in
+                        settingModel.sendingToSettingCharacter(WhiteBalance.GenerateSettingCommand(selected))
                     }
                     
-                    Picker("setting:isomin", selection: $peripheralModel.selectedIsoMin) {
+                    Picker("setting:isomin", selection: $settingModel.selectedIsoMin) {
                         ForEach(IsoMin.isomin.displayValues, id: \.self) {
                             Text($0)
                         }
-                    }.onChange(of: peripheralModel.selectedIsoMin) { selected in
-                        peripheralModel.sendingToSettingCharacter(IsoMin.GenerateSettingCommand( selected))
+                    }.onChange(of: settingModel.selectedIsoMin) { selected in
+                        settingModel.sendingToSettingCharacter(IsoMin.GenerateSettingCommand( selected))
                     }
                     
-                    Picker("setting:isomax", selection: $peripheralModel.selectedIsoMax) {
+                    Picker("setting:isomax", selection: $settingModel.selectedIsoMax) {
                         ForEach(IsoMax.isomax
                             .displayValues, id: \.self) {
                             Text($0)
                         }
-                    }.onChange(of: peripheralModel.selectedIsoMax) { selected in
-                        peripheralModel.sendingToSettingCharacter(IsoMax.GenerateSettingCommand(selected))
+                    }.onChange(of: settingModel.selectedIsoMax) { selected in
+                        settingModel.sendingToSettingCharacter(IsoMax.GenerateSettingCommand(selected))
                     }
                     
-                    Picker("setting:sharpness", selection: $peripheralModel.selectedSharpness) {
+                    Picker("setting:sharpness", selection: $settingModel.selectedSharpness) {
                         ForEach(Sharpness.sharpness.displayValues, id: \.self) {
                             Text($0)
                         }
-                    }.onChange(of: peripheralModel.selectedSharpness) { selected in
-                        peripheralModel.sendingToSettingCharacter(Sharpness.GenerateSettingCommand( selected))
+                    }.onChange(of: settingModel.selectedSharpness) { selected in
+                        settingModel.sendingToSettingCharacter(Sharpness.GenerateSettingCommand( selected))
                     }
                     
-                    Picker("setting:gocolor", selection: $peripheralModel.selectedGoColor) {
+                    Picker("setting:gocolor", selection: $settingModel.selectedGoColor) {
                         ForEach(GoColor.gocolor.displayValues, id: \.self) {
                             Text($0)
                         }
-                    }.onChange(of: peripheralModel.selectedGoColor) { selected in
-                        peripheralModel.sendingToSettingCharacter(GoColor.GenerateSettingCommand( selected))
+                    }.onChange(of: settingModel.selectedGoColor) { selected in
+                        settingModel.sendingToSettingCharacter(GoColor.GenerateSettingCommand( selected))
+                    }
+                    
+                    Picker("setting:gps", selection: $settingModel.selectedGps) {
+                        ForEach(Gps.gps.displayValues, id: \.self) {
+                            Text($0)
+                        }
+                    }.onChange(of: settingModel.selectedGps) { selected in
+                        print("sending gps")
+                        settingModel.sendingToSettingCharacter(Gps.GenerateSettingCommand(selected))
                     }
                 }
             }
             
         }
         .navigationTitle("setting:title")
-        .onAppear(){
-        }
     }
 }
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView(peripheralModel: PeripheralModel())
+        SettingView(settingModel: SettingViewModel())
     }
 }

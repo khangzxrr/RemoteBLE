@@ -20,6 +20,7 @@ class AllSettings {
         IsoMax.ID: IsoMax.self,
         Sharpness.ID: Sharpness.self,
         GoColor.ID: GoColor.self,
-        Wind.ID: Wind.self
+        Wind.ID: Wind.self,
+        Gps.ID : Gps.self
     ]
 }

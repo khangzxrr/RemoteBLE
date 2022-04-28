@@ -26,6 +26,8 @@
 		04684E8C27DE20F30048F1D0 /* GoProDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */; };
 		04684E8E27DE21580048F1D0 /* GoProEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8D27DE21580048F1D0 /* GoProEnums.swift */; };
 		04684E9027DE28E80048F1D0 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04684E8F27DE28E80048F1D0 /* DataExtension.swift */; };
+		046BDB5C2819119E0035A19E /* Gps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BDB5B2819119E0035A19E /* Gps.swift */; };
+		046BDB60281919700035A19E /* PeripheralActionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BDB5F281919700035A19E /* PeripheralActionProtocol.swift */; };
 		0478B05C280FB21900FFCF56 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478B05B280FB21900FFCF56 /* SettingViewModel.swift */; };
 		047FDC70280924440049A502 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC6F280924440049A502 /* AuthenticationView.swift */; };
 		047FDC762809784E0049A502 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 047FDC742809784E0049A502 /* UserModel.xcdatamodeld */; };
@@ -97,6 +99,8 @@
 		04684E8B27DE20F30048F1D0 /* GoProDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProDataParser.swift; sourceTree = "<group>"; };
 		04684E8D27DE21580048F1D0 /* GoProEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoProEnums.swift; sourceTree = "<group>"; };
 		04684E8F27DE28E80048F1D0 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		046BDB5B2819119E0035A19E /* Gps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gps.swift; sourceTree = "<group>"; };
+		046BDB5F281919700035A19E /* PeripheralActionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralActionProtocol.swift; sourceTree = "<group>"; };
 		0478B05B280FB21900FFCF56 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		047FDC6F280924440049A502 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		047FDC752809784E0049A502 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
@@ -275,6 +279,7 @@
 				04C98BA027D12F120030403F /* PeripheralModel.swift */,
 				04FE8BAA27CCE50F007AF859 /* PeripheralView.swift */,
 				04172144280EBBAB006F237A /* TempDataContainer.swift */,
+				046BDB5F281919700035A19E /* PeripheralActionProtocol.swift */,
 			);
 			path = Peripheral;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				04FB389A281170E200C749E8 /* GoColor.swift */,
 				04FB389C2811710800C749E8 /* Wind.swift */,
 				04E93B9728188BEE009262F6 /* AllSettings.swift */,
+				046BDB5B2819119E0035A19E /* Gps.swift */,
 			);
 			path = SettingParams;
 			sourceTree = "<group>";
@@ -580,8 +586,10 @@
 				04E93B9828188BEE009262F6 /* AllSettings.swift in Sources */,
 				047FDC78280978F40049A502 /* AuthenticationViewModel.swift in Sources */,
 				04FB387F281113CF00C749E8 /* GoProSettingCommands.swift in Sources */,
+				046BDB60281919700035A19E /* PeripheralActionProtocol.swift in Sources */,
 				04FE8BAB27CCE50F007AF859 /* PeripheralView.swift in Sources */,
 				04FB388D28116E4B00C749E8 /* HyperSmooth.swift in Sources */,
+				046BDB5C2819119E0035A19E /* Gps.swift in Sources */,
 				04411C6A27CE285900E2AC19 /* GoPro.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,7 +783,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.remoteControl;
 				PRODUCT_NAME = RemoteBLE;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -811,7 +819,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.khangzxrr.remoteControl;
 				PRODUCT_NAME = RemoteBLE;
 				PROVISIONING_PROFILE_SPECIFIER = "";
