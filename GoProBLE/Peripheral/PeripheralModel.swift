@@ -9,8 +9,11 @@ import Foundation
 import CoreBluetooth
 import SwiftUI
 
-public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  {
+public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject, PeripheralActions  {
     public var peripheral: CBPeripheral! = nil
+    
+    public var settingModel = SettingViewModel()
+    
     private var bleConnection : BLEConnection! = nil
     
     var goPro : GoPro! = nil
@@ -33,24 +36,6 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
     
     @Published var successDiscoveredCharacteristic = false
     
-    //================ Setting =======================
-    @Published var selectedResolution : String = Resolution.resolutions.displayValues.first!
-    @Published var selectedFps = Fps.fps.displayValues.first!
-    
-    @Published var selectedLens = Lens.lens.displayValues.first!
-    //4k - 30 fps gopro 9, if we set superview but 60 fps => it will fallback to wise
-    
-    @Published var selectedHypersmooth = Hypersmooth.hypersmooths.displayValues.first!
-    @Published var selectedShutterSpeed = ShutterSpeed.shutters.displayValues.first!
-    @Published var selectedEV = EV.ev.displayValues.first!
-    @Published var selectedWhiteBalance = WhiteBalance.whitebalance.displayValues.first!
-    @Published var selectedIsoMin = IsoMin.isomin.displayValues.first!
-    @Published var selectedIsoMax = IsoMax.isomax.displayValues.first!
-    @Published var selectedSharpness = Sharpness.sharpness.displayValues.first!
-    @Published var selectedGoColor = GoColor.gocolor.displayValues.first!
-    @Published var selectedWind = Wind.wind.displayValues.first!
-    
-    
     private var tempData : TempDataContainer! = nil
     
     
@@ -69,6 +54,8 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         self.peripheral = peri
         
         goPro = GoPro()
+        
+        settingModel.setPeripheralAction(peripheralActions: self)
         
         self.peripheral.delegate = self
         
@@ -211,80 +198,6 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         }
     }
     
-    private func parsingCameraSettings(_ statusBytesArray: inout [UInt8]) {
-        switch statusBytesArray[0] {
-        case Resolution.ID:
-            print("Resolution ")
-            selectedResolution = GoProDataParser.ParseSetting(&statusBytesArray, setting: Resolution.self)!
-            
-            break
-            
-        case Fps.ID:
-            print("Fps: ")
-            selectedFps = GoProDataParser.ParseSetting(&statusBytesArray, setting: Fps.self)!
-            
-            break
-            
-        case Lens.ID:
-            print("Lens:")
-            selectedLens = GoProDataParser.ParseSetting(&statusBytesArray, setting: Lens.self)!
-            
-            break
-            
-        case Hypersmooth.ID:
-            print("Hypersmooth:")
-            selectedHypersmooth = GoProDataParser.ParseSetting(&statusBytesArray, setting: Hypersmooth.self)!
-            
-            break
-            
-        case ShutterSpeed.ID:
-            print("ShutterSpeed:")
-            selectedShutterSpeed = GoProDataParser.ParseSetting(&statusBytesArray, setting: ShutterSpeed.self)!
-            
-            break
-            
-        case EV.ID:
-            print("EV:")
-            selectedEV = GoProDataParser.ParseSetting(&statusBytesArray, setting: EV.self)!
-            break
-            
-        case WhiteBalance.ID:
-            print("Whitebalance:")
-            selectedWhiteBalance = GoProDataParser.ParseSetting(&statusBytesArray, setting: WhiteBalance.self)!
-            
-            break
-            
-        case IsoMin.ID:
-            print("ISO min: ")
-            selectedIsoMin = GoProDataParser.ParseSetting(&statusBytesArray, setting: IsoMin.self)!
-            
-            break
-            
-        case IsoMax.ID:
-            print("ISO max: ")
-            selectedIsoMax = GoProDataParser.ParseSetting(&statusBytesArray, setting: IsoMax.self)!
-            break
-            
-        case Sharpness.ID:
-            print("Sharpness: ")
-            selectedSharpness = GoProDataParser.ParseSetting(&statusBytesArray, setting: Sharpness.self)!
-            break
-            
-        case GoColor.ID:
-            print("Color: ")
-            selectedGoColor = GoProDataParser.ParseSetting(&statusBytesArray, setting: GoColor.self)!
-            break
-            
-        case Wind.ID:
-            print("Wind: ")
-            selectedWind = GoProDataParser.ParseSetting(&statusBytesArray, setting: Wind.self)!
-            break
-            
-        default:
-            break
-        }
-    }
-    
     //trigger to update setting
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         if characteristic == goPro.SettingCharacteristic {
@@ -297,7 +210,7 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         }
     }
     
-    private func parsingCameraFunctionState(_ statusBytesArray: inout [UInt8]){
+    private func parsingCameraFunctionState(_ statusBytesArray: inout [UInt8]) throws {
         switch statusBytesArray[0] {
         case 0x08:
             print("Is busy")
@@ -364,16 +277,19 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         
         print("bytes: ", statusBytesOriginal.hexEncodedString())
         
-        
-        
-        while statusBytesArray.count != 0 {
-            parsingCameraFunctionState(&statusBytesArray)
-            
-            if statusBytesArray.count > 0 {
-                parsingCameraSettings(&statusBytesArray)
+        do {
+            while statusBytesArray.count != 0 {
+                try parsingCameraFunctionState(&statusBytesArray)
+                
+                if statusBytesArray.count > 0 {
+                    try settingModel.parsingCameraSettings(&statusBytesArray)
+                }
             }
-            
+        } catch {
+            print("Catched exception ")
         }
+        
+        
         
         
         
@@ -386,10 +302,14 @@ public class PeripheralModel: NSObject, CBPeripheralDelegate, ObservableObject  
         if bytesArray.first == 0x52 { //setting update
             bytesArray.removeFirst(2)
             processUpdatedData(bytesArray)
+            
+            return
         }
         if bytesArray.first == 0x92 { //setting push update
             bytesArray.removeFirst(2)
             processUpdatedData(bytesArray)
+            
+            return
         }
         
         if bytesArray.first == 0x53 { //status update

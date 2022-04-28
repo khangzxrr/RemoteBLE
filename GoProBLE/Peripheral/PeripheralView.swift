@@ -136,7 +136,7 @@ struct PeripheralView: View {
                     }
                     
                     HStack(alignment: .center, spacing: 0) {
-                        NavigationLink("peripheral:setting", destination: SettingView(peripheralModel: periModel))
+                        NavigationLink("peripheral:setting", destination: SettingView(settingModel: periModel.settingModel))
                             .opacity(periModel.currentMode == .Video ? 1 : 0)
                             .disabled(periModel.currentMode != .Video)
                     }
